@@ -4,11 +4,6 @@
 
 hotateはパラメータを利用してモジュールに引数渡したり、色々工夫できている。
 
-やりたいこと
-・chiselprojectsIsakaが動くかテスト
-・hotateの改良
-・firstの改良
-
 改善案
 ・全体,ファイル名と変数名
 ・全体,型のパラメータ化(https://qiita.com/taichi-ishitani/items/ceee94d612c10bd08376)

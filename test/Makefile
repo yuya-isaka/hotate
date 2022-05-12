@@ -10,3 +10,6 @@
 	rm -f $@.elf
 	rm -f $@
 	rm -f $@.bin
+
+clean:
+	$(RM) *.o *.elf *.bin
