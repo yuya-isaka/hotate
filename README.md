@@ -50,8 +50,8 @@ $ od -An -tx4 -w4 -v test.bin > test.hex
 $ make <テストしたいCファイル名>
 
 例
-$ make test
-→ test.cがRISC-V用にコンパイルされる。
+$ make fib
+→ fib.cがRISC-V用にコンパイルされる。
 
 // 下記は必要に応じて、多分いらない。
 // sudo chmod 777 test.hex

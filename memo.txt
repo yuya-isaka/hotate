@@ -1,4 +1,4 @@
-参考：chibiscv, 
+参考：chibiscv(kivantium-core), chibi-risc-v(kivantium-core)
 古い：RV32
 新しい：hotate
 
