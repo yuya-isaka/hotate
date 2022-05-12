@@ -16,7 +16,7 @@ module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 
   reg [31:0] mem [MEM_SIZE-1:0];
 
   initial begin
-    $readmemh("/home/isaka/hotate/test.hex", mem);
+    $readmemh("/home/isaka/hotate/test/fib.hex", mem);
   end
 
   always_ff @(posedge clk) begin
