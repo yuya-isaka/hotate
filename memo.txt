@@ -5,10 +5,9 @@
 hotateはパラメータを利用してモジュールに引数渡したり、色々工夫できている。
 
 やりたいこと
-・chisel本のArty使ってるやつで、ちょと改良して動くかどうか
+・chiselprojectsIsakaが動くかテスト
 ・hotateの改良
 ・firstの改良
-・chiselprojectsIsakaが動くかテスト
 
 改善案
 ・全体,ファイル名と変数名
