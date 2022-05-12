@@ -1,5 +1,5 @@
 
-test.elf:     file format elf32-littleriscv
+fib.elf:     file format elf32-littleriscv
 
 
 Disassembly of section .text.init:
