@@ -1,8 +1,14 @@
-参考：chibiscv(kivantium-core), chibi-risc-v(kivantium-core)
+参考：chibiscv(kivantium-core), chibi-risc-v(kivantium-core), ChiselProjectsIsaka(Pencilrocket、動かせたやつ？),  riscv-processor-hashi, riscv-book(chisel本井阪勉強)
 古い：RV32
-新しい：hotate
+新しい：hotate(kivantium-core参考に作ってるやつ), first(Pencilrocketを参考に自分で作ってるやつ)
 
 hotateはパラメータを利用してモジュールに引数渡したり、色々工夫できている。
+
+やりたいこと
+・chisel本のArty使ってるやつで、ちょと改良して動くかどうか
+・hotateの改良
+・firstの改良
+・chiselprojectsIsakaが動くかテスト
 
 改善案
 ・全体,ファイル名と変数名
