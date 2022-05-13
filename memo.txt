@@ -51,3 +51,60 @@ hotateはパラメータを利用してモジュールに引数渡したり、�
 目標
 ・xv6が動くCPU(xv6が2019年からRISC-Vに対応)
 ・OSを動かすために割り込みや特権命令，スーパーバイザーモードでの仮想アドレスを実装する必要あり
+
+
+makefile 他のパターン
+--------------------------------------------------------------
+CC := riscv32-unknown-linux-gnu-gcc
+LD := riscv32-unknown-linux-gnu-ld
+OBJCOPY := riscv32-unknown-linux-gnu-objcopy
+OBJDUMP := riscv32-unknown-linux-gnu-objdump
+CFLAGS := -march=rv32ima -c
+
+main: $(ARG).hex $(ARG).dump
+	./hex2bin.sh $(ARG).hex > $(ARG).b
+
+$(ARG).hex: $(ARG).bin
+	hexdump -v -e '/4 "%08X" "\n"' $(ARG).bin > $(ARG).hex
+
+$(ARG).bin: $(ARG).elf
+	$(OBJCOPY) -O binary $(ARG).elf $(ARG).bin
+
+$(ARG).elf: $(ARG).o start.o
+	$(LD) $(ARG).o start.o -Tlink.ld -nostartfiles -static -o $(ARG).elf
+
+start.o: start.S
+	$(CC) $(CFLAGS) -o start.o start.S
+
+$(ARG).o: $(ARG).S
+	$(CC) $(CFLAGS) -o $(ARG).o $(ARG).S
+
+$(ARG).S: $(ARG).c
+	$(CC) $(CFLAGS) -S -o $(ARG).S $(ARG).c
+
+$(ARG).dump: $(ARG).elf
+	$(OBJDUMP) -d $(ARG).elf > $(ARG).dump
+
+clean:
+	$(RM) *.o *.out *.bin *.elf
+----------------------------------------------------------------
+
+Verilator
+VCDファイル
+テストベンチでVCD波形ダンプをONにする
+verilator --cc --exe  --trace --trace-params --trace-structs --trace-underscore counter_4bit.v -exe tb_counter_4bit.cpp
+make -C obj_dir -f Vcounter_4bit.mk
+./obj_dir/Vcounter_4bit
+
+FSTファイル
+テストベンチでFST波形ダンプ
+verilator --cc --exe  --trace-fst --trace-params --trace-structs --trace-underscore counter_4bit.v -exe tb_counter_4bit.cpp
+make -C obj_dir -f Vcounter_4bit.mk
+./obj_dir/Vcounter_4bit
+
+
+_______________
+Verilatorの使い方
+1. https://msyksphinz.hatenablog.com/entry/2020/05/06/040000
+2. https://msyksphinz.hatenablog.com/entry/2020/05/08/040000
+3. 
