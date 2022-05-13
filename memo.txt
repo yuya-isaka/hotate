@@ -102,9 +102,23 @@ verilator --cc --exe  --trace-fst --trace-params --trace-structs --trace-undersc
 make -C obj_dir -f Vcounter_4bit.mk
 ./obj_dir/Vcounter_4bit
 
+Lint
+verilator --lint-only -Wall counter_4bit.v
 
 _______________
 Verilatorの使い方
 1. https://msyksphinz.hatenablog.com/entry/2020/05/06/040000
 2. https://msyksphinz.hatenablog.com/entry/2020/05/08/040000
-3. 
+3. https://msyksphinz.hatenablog.com/entry/2020/05/10/000000
+4. https://msyksphinz.hatenablog.com/entry/2020/05/12/040000
+
+
+
+kivantiumさんのverilog文法について
+https://kivantium.hateblo.jp/entry/2016/09/17/191638
+
+http://japanese.sugawara-systems.com/tutorial/verilog/framepage7.htm
+
+
+Vivado Tclスクリプト
+https://qiita.com/ikwzm/items/a0120079d2f7f86a5904
