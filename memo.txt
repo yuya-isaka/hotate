@@ -122,3 +122,8 @@ http://japanese.sugawara-systems.com/tutorial/verilog/framepage7.htm
 
 Vivado Tclスクリプト
 https://qiita.com/ikwzm/items/a0120079d2f7f86a5904
+
+
+RISC-Vのコードモデルについて
+https://msyksphinz.hatenablog.com/entry/2020/05/04/040000
+https://msyksphinz.hatenablog.com/entry/2020/05/05/040000
