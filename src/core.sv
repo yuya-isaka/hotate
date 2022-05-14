@@ -10,14 +10,14 @@ module core (
   // ポート
   input wire clk, rst;
   output wire [15:0] led;
-  output wire [15:0] data_seg;
+  output wire [31:0] data_seg;
 
   // パラメータ ---------------------------------------------------------------------
 
   parameter INST_MEM_SIZE = 32'd1024;
   parameter INST_ADDR_SIZE = 32'd9;
   parameter DATA_MEM_SIZE = 32'd4096;
-  parameter DATA_ADDR_SIZE = 32'd10;
+  parameter DATA_ADDR_SIZE = 32'd11;
 
   // PC (WBで更新) ---------------------------------------------------------------------------
 
@@ -26,11 +26,11 @@ module core (
 
   // Initialize pc
   // regは初期化必要？
-  task init_pc;
-    begin
-      pc <= 32'd0;
-    end
-  endtask
+  // task init_pc;
+  //   begin
+  //     pc = 32'd0;
+  //   end
+  // endtask
 
   // Update led
   assign led = pc[15:0];
@@ -44,17 +44,18 @@ module core (
 
   // Initialize state
   // regは初期化必要
-  task init_state;
-    begin
-      state_idle <= 7'd1;
-      {state_if, state_de, state_ex, state_ma, state_wb} <= 7'd0;
-    end
-  endtask
+  // task init_state;
+  //   begin
+  //     state_idle = 1'b1;
+  //     {state_if, state_de, state_ex, state_ma, state_wb} = 5'b0;
+  //   end
+  // endtask
 
   // FSM
   always_ff @(posedge clk) begin
     if (rst) begin
-      init_state();
+      state_idle <= 1'b1;
+      {state_if, state_de, state_ex, state_ma, state_wb} <= 5'b0;
     end
     else begin
       if (state_idle) begin
@@ -87,7 +88,8 @@ module core (
   // Instruction Fetch ----------------------------------------------------------------------------------------
 
   // Instruction memory
-  typedef struct {
+  // ↓ Verilatorはunpackな構造体をpackにする
+  typedef struct packed {
     logic [31:0]  addr; // wire
     reg [31:0]    inst;
   } instruction_memory;
@@ -106,7 +108,7 @@ module core (
 
   // Instruction Decode --------------------------------------------------------------------------------------------
 
-  typedef struct {
+  typedef struct packed {
     logic [4:0]   rs1, rs2;   // wire
     logic [4:0]   rd;         // wire
     logic [2:0]   funct3;     // wire
@@ -142,7 +144,7 @@ module core (
 
   // Register ----------------------------------------------------------------------------------------------------
 
-  typedef struct {
+  typedef struct packed {
     logic [31:0] rs1_data, rs2_data; // wire
     logic [31:0] rd_data; // wire
   } register_file;
@@ -157,7 +159,7 @@ module core (
   task init_rf;
     begin
       for(int i=0; i<32; i++) begin
-        register[i] <= 32'd0;
+        register[i] = 32'd0;
       end
     end
   endtask
@@ -201,7 +203,7 @@ module core (
 
   // Memory Access --------------------------------------------------------------------------------------------------
 
-  typedef struct {
+  typedef struct packed {
     logic [31:0]  read_addr, read_data, write_addr, write_data; // read_addr, write_addr, write_data ... wire
     logic         write_enable;
   } data_memory;
@@ -212,8 +214,9 @@ module core (
   assign dmem.read_addr = alu_out;
   // データメモリ書き込み
   assign dmem.write_addr = alu_out;
-  assign dmem.write_data = (de.funct3 == 3'b000) ? rf.rs2_data[7:0] :
-                           (de.funct3 == 3'b001) ? rf.rs2_data[15:0] :
+  // ↓verilatorに怒られたので変
+  assign dmem.write_data = (de.funct3 == 3'b000) ? {24'b0, rf.rs2_data[7:0]} :
+                           (de.funct3 == 3'b001) ? {16'b0, rf.rs2_data[15:0]} :
                            rf.rs2_data;
   assign dmem.write_enable = state_ma && de._store;
 
@@ -253,12 +256,12 @@ module core (
   // Update pc
   always_ff @(posedge clk) begin
     if (rst) begin
-      init_pc();
+      pc <= 32'd0;
     end
     else begin
       if (state_wb) begin
         if (de._branch) begin
-          if (alu_out) begin
+          if (alu_out != 32'b0) begin // 怒られた
             pc <= pc + de.imm;
           end
           else begin
@@ -287,8 +290,8 @@ module core (
   // Initialize ------------------------------------------------------------------------------------------
 
   initial begin
-    init_pc();
-    init_state();
+    // init_pc();
+    // init_state();
     init_rf();
   end
 

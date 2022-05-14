@@ -32,7 +32,7 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
   task init_mem;
     begin
       for(int i=0; i<MEM_SIZE; i++) begin
-        mem[i] <= 32'd0;
+        mem[i] = 32'd0;
       end
     end
   endtask
@@ -47,10 +47,14 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
       init_mem();
     end else begin
       // read
-      read_data <= mem[read_addr[ADDR_SIZE:2]];
+      // read_data <= mem[read_addr[ADDR_SIZE:2]];
+      // ↓ verilatorに怒られて変更
+      read_data <= mem[read_addr[ADDR_SIZE:0]];
       // write
       if (write_enable) begin
-        mem[write_addr[ADDR_SIZE:2]] <= write_data;
+        // mem[write_addr[ADDR_SIZE:2]] <= write_data;
+        // ↓ verilatorに怒られて変更
+        mem[write_addr[ADDR_SIZE:0]] <= write_data;
       end
     end
   end

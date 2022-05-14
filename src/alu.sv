@@ -22,7 +22,7 @@ module alu (
   output logic [31:0] alu_out; // wire
 
   // 処理
-  logic [31:0] tmp_out; // wire
+  // logic [31:0] tmp_out; // wire
   wire [31:0] op2 = (arithmetic_imm || store || load) ? imm_data : rs2_data;
 
   // output (alu_outとtmp_outは中で使うから,logicで宣言)
@@ -58,11 +58,12 @@ module alu (
         10'b0000001_000: alu_out = $signed(rs1_data) * $signed(op2);
         // MULH
         10'b0000001_001: begin
-          tmp_out = $signed(rs1_data) * $signed(op2);
+          // tmp_out = $signed(rs1_data) * $signed(op2);
           // https://hikalium.hatenablog.jp/entry/2017/07/10/091146
           // 算術右シフトをするときは，singedでくくってあげる必要がある
           // 宣言してなかったらunsignedになる
-          alu_out = $signed(tmp_out) >>> 32;
+          // ↓ verilator
+          alu_out = $signed($signed(rs1_data) * $signed(op2)) >>> 32;
         end
         // MULHSU
         10'b0000001010: begin
@@ -72,18 +73,22 @@ module alu (
           // とmarseeさんがいってるが，これはそれをしてる？？
 
           // つまり，符号ありとの掛け算をするから，まずは符号ありの状態にする必要がある？
-          tmp_out = $signed(rs1_data) * $signed({1'b0, op2});
+          // tmp_out = $signed(rs1_data) * $signed({1'b0, op2});
+          // ↓ verilatorに怒られて変更
+          // tmp_out = $signed(rs1_data) * $signed(op2);
           // ここは算術右シフトであってるの？？
           // result = $signed(tmpresult) >>> 32;
           // 符号なしにtmpresultはなっていると考えて，右論理シフトをして，最上位ビットは強制的に0にする
-          alu_out = $signed(tmp_out) >>> 32;
+          // ↓ verilator
+          alu_out = $signed($signed(rs1_data) * $signed(op2)) >>> 32;
         end
         // MULHU
         10'b0000001011: begin
           // ここは符号なし同士の計算
           // 論理右シフトでおっけい
-          tmp_out = rs1_data * op2;
-          alu_out = tmp_out >> 32;
+          // tmp_out = rs1_data * op2;
+          // ↓ verilator
+          alu_out = (rs1_data * op2) >> 32;
         end
         // DIV
         // 0除算のケース -> ffff_ffff
@@ -108,17 +113,29 @@ module alu (
     else if (branch) begin
       case (funct3)
         // BEQ
-        3'b000: alu_out = (rs1_data == op2);
+        // 3'b000: alu_out = (rs1_data == op2);
+        // ↓ verilatorに怒られて変更
+        3'b000: alu_out = {31'b0, (rs1_data == op2)};
         // BNE
-        3'b001: alu_out = (rs1_data != op2);
+        // 3'b001: alu_out = (rs1_data != op2);
+        // ↓ verilatorに怒られて変更
+        3'b001: alu_out = {31'b0, (rs1_data != op2)};
         // BLT
-        3'b100: alu_out = ($signed(rs1_data) < $signed(op2));
+        // 3'b100: alu_out = ($signed(rs1_data) < $signed(op2));
+        // ↓ verilatorに怒られて変更
+        3'b100: alu_out = {31'b0, ($signed(rs1_data) < $signed(op2))};
         // BGE
-        3'b101: alu_out = ($signed(rs1_data) >= $signed(op2));
+        // 3'b101: alu_out = ($signed(rs1_data) >= $signed(op2));
+        // ↓ verilatorに怒られて変更
+        3'b101: alu_out = {31'b0, ($signed(rs1_data) >= $signed(op2))};
         // BLTU
-        3'b110: alu_out = ($unsigned(rs1_data) < $unsigned(op2));
+        // 3'b110: alu_out = ($unsigned(rs1_data) < $unsigned(op2));
+        // ↓ verilatorに怒られて変更
+        3'b110: alu_out = {31'b0, ($unsigned(rs1_data) < $unsigned(op2))};
         // BGEU
-        3'b111: alu_out = ($unsigned(rs1_data) >= $unsigned(op2));
+        // 3'b111: alu_out = ($unsigned(rs1_data) >= $unsigned(op2));
+        // ↓ verilatorに怒られて変更
+        3'b111: alu_out = {31'b0, ($unsigned(rs1_data) >= $unsigned(op2))};
         default: alu_out = 32'd0;
       endcase
     end

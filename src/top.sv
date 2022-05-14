@@ -13,7 +13,7 @@ module top (
    output logic [6:0] seg;       // wire
 
    // CoreとSevenを繋ぐ架け橋
-   wire [15:0] data_seg;
+   wire [31:0] data_seg;
 
 //    // 同期クロック生成
 //    // 10万分周
@@ -24,7 +24,7 @@ module top (
 //     else count <= count + 32'd1;
 //   end
 //   wire sysclk = (count > 32'd50000) ? 1'b0 : 1'b1;
-//   // CoreとSevenのclkをsysclkに変更
+//    // CoreとSevenのclkをsysclkに変更
 
    // RISC-V core
    // input: clk, rst
