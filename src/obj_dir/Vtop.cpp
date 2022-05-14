@@ -3,7 +3,6 @@
 
 #include "Vtop.h"
 #include "Vtop__Syms.h"
-#include "verilated_fst_c.h"
 
 //============================================================
 // Constructors
@@ -46,7 +45,6 @@ static void _eval_initial_loop(Vtop__Syms* __restrict vlSymsp) {
     vlSymsp->__Vm_didInit = true;
     Vtop___024root___eval_initial(&(vlSymsp->TOP));
     // Evaluate till stable
-    vlSymsp->__Vm_activity = true;
     do {
         VL_DEBUG_IF(VL_DBG_MSGF("+ Initial loop\n"););
         Vtop___024root___eval_settle(&(vlSymsp->TOP));
@@ -63,7 +61,6 @@ void Vtop::eval_step() {
     // Initialize
     if (VL_UNLIKELY(!vlSymsp->__Vm_didInit)) _eval_initial_loop(vlSymsp);
     // Evaluate till stable
-    vlSymsp->__Vm_activity = true;
     do {
         VL_DEBUG_IF(VL_DBG_MSGF("+ Clock loop\n"););
         Vtop___024root___eval(&(vlSymsp->TOP));
@@ -87,33 +84,4 @@ const char* Vtop::name() const {
 
 VL_ATTR_COLD void Vtop::final() {
     Vtop___024root___final(&(vlSymsp->TOP));
-}
-
-//============================================================
-// Trace configuration
-
-void Vtop___024root__trace_init_top(Vtop___024root* vlSelf, VerilatedFst* tracep);
-
-VL_ATTR_COLD static void trace_init(void* voidSelf, VerilatedFst* tracep, uint32_t code) {
-    // Callback from tracep->open()
-    Vtop___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtop___024root*>(voidSelf);
-    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    if (!vlSymsp->_vm_contextp__->calcUnusedSigs()) {
-        VL_FATAL_MT(__FILE__, __LINE__, __FILE__,
-            "Turning on wave traces requires Verilated::traceEverOn(true) call before time 0.");
-    }
-    vlSymsp->__Vm_baseCode = code;
-    tracep->scopeEscape(' ');
-    tracep->pushNamePrefix(std::string{vlSymsp->name()} + ' ');
-    Vtop___024root__trace_init_top(vlSelf, tracep);
-    tracep->popNamePrefix();
-    tracep->scopeEscape('.');
-}
-
-VL_ATTR_COLD void Vtop___024root__trace_register(Vtop___024root* vlSelf, VerilatedFst* tracep);
-
-VL_ATTR_COLD void Vtop::trace(VerilatedFstC* tfp, int levels, int options) {
-    if (false && levels && options) {}  // Prevent unused
-    tfp->spTrace()->addInitCb(&trace_init, &(vlSymsp->TOP));
-    Vtop___024root__trace_register(&(vlSymsp->TOP), tfp->spTrace());
 }
