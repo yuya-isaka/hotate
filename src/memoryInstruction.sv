@@ -8,6 +8,7 @@ module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 
   inst
 );
 
+  // ポート
   input wire clk, rst;
   input wire [31:0] addr;
   output reg [31:0] inst;

@@ -14,15 +14,18 @@ module alu (
   alu_out
 );
 
+  // ポート
   input wire [31:0] rs1_data, rs2_data, imm_data;
   input wire [2:0] funct3;
   input wire [6:0] funct7;
   input wire arithmetic, arithmetic_imm, store, load, branch;
   output logic [31:0] alu_out; // wire
 
+  // 処理
   logic [31:0] tmp_out; // wire
   wire [31:0] op2 = (arithmetic_imm || store || load) ? imm_data : rs2_data;
 
+  // output (alu_outとtmp_outは中で使うから,logicで宣言)
   always_comb begin
     if (load || store) begin
       alu_out = rs1_data + op2;
