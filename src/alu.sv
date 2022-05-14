@@ -52,34 +52,55 @@ module alu (
         10'b0000000_101: alu_out = $unsigned(rs1_data) >> op2[4:0];
         // SRA
         10'b0100000_101: alu_out = $signed(rs1_data) >> op2[4:0];
+        // 参考：https://qiita.com/asfdrwe/items/ebeb2bd98ec1e496f666#asfrv32im%E3%81%AE%E8%A8%AD%E8%A8%88
+        // でもちょっと間違ってそう．
         // MUL
         10'b0000001_000: alu_out = $signed(rs1_data) * $signed(op2);
         // MULH
         10'b0000001_001: begin
           tmp_out = $signed(rs1_data) * $signed(op2);
+          // https://hikalium.hatenablog.jp/entry/2017/07/10/091146
+          // 算術右シフトをするときは，singedでくくってあげる必要がある
+          // 宣言してなかったらunsignedになる
           alu_out = $signed(tmp_out) >>> 32;
         end
         // MULHSU
         10'b0000001010: begin
+          // 符号ありと符号なしの乗算
+          // 通常に宣言したunsignedをsignedにキャストするときは，
+          // 最上位ビットに1'b0をつけくわえて1ビット増やしてからsignedにキャストするのが一般的
+          // とmarseeさんがいってるが，これはそれをしてる？？
+
+          // つまり，符号ありとの掛け算をするから，まずは符号ありの状態にする必要がある？
           tmp_out = $signed(rs1_data) * $signed({1'b0, op2});
+          // ここは算術右シフトであってるの？？
+          // result = $signed(tmpresult) >>> 32;
+          // 符号なしにtmpresultはなっていると考えて，右論理シフトをして，最上位ビットは強制的に0にする
           alu_out = $signed(tmp_out) >>> 32;
         end
         // MULHU
         10'b0000001011: begin
+          // ここは符号なし同士の計算
+          // 論理右シフトでおっけい
           tmp_out = rs1_data * op2;
           alu_out = tmp_out >> 32;
         end
         // DIV
+        // 0除算のケース -> ffff_ffff
+        // オーバーフローのケース -> 8000_000
         10'b0000001100: alu_out = (op2 == 32'b0) ? 32'hffff_ffff :
                                 ((rs1_data == 32'h8000_0000) && (op2 == 32'hffff_ffff)) ? 32'h8000_0000 :
                                 $signed($signed(rs1_data) / $signed(op2));
         // DIVU
+        // 符号あり / 符号なし
         10'b0000001101: alu_out = (op2 == 32'b0) ? 32'hffff_ffff : (rs1_data / op2);
         // REM
+        // 符号ありmod
         10'b0000001110: alu_out = (op2 == 32'b0) ? rs1_data :
                                 ((rs1_data == 32'h8000_0000) && (op2 == 32'hffff_ffff)) ? 32'h0 :
                                 $signed($signed(rs1_data) % $signed(op2));
         // REMU
+         // 符号なしmod
         10'b0000001111: alu_out = (op2 == 32'b0) ? rs1_data : (rs1_data % op2);
         default: alu_out = 32'd0;
       endcase

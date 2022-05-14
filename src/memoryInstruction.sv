@@ -13,6 +13,9 @@ module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 
   input wire [31:0] addr;
   output reg [31:0] inst; // always_ffで代入する先だから、reg??
 
+  // MEM_SIZE = 1024
+  // ADDR_SIZE = 9 (1024ならこれが最大？)
+
   // 処理
   (* ram_style = "block" *)
   reg [31:0] mem [MEM_SIZE-1:0];

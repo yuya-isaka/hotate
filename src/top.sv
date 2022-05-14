@@ -15,6 +15,17 @@ module top (
    // CoreとSevenを繋ぐ架け橋
    wire [15:0] data_seg;
 
+//    // 同期クロック生成
+//    // 10万分周
+//   reg [31:0] count; // こいつinialの初期化いるかも？
+//   always_ff @(posedge clk) begin
+//     if (rst) count <= 32'd0;
+//     else if (count == 32'd100000) count <= 32'd0;
+//     else count <= count + 32'd1;
+//   end
+//   wire sysclk = (count > 32'd50000) ? 1'b0 : 1'b1;
+//   // CoreとSevenのclkをsysclkに変更
+
    // RISC-V core
    // input: clk, rst
    // output: led, data_seg
