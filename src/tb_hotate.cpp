@@ -1,6 +1,6 @@
 #include <iostream>
 #include <verilated.h>
-#include "Vcounter_4bit.h"
+#include "Vtop.h"
 // #include <verilated_vcd_c.h> // VCD出力用のインクルードファイル
 #include <verilated_fst_c.h>  // FST出力用のインクルードファイルを追加
 
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	Verilated::commandArgs(argc, argv);
 
 	// counter_4bitモジュールをインスタンス化
-	Vcounter_4bit *dut = new Vcounter_4bit();
+	Vtop *dut = new Vtop();
 
 	// VCD波形ダンプ
 	// // 波形ダンプを有効化し、波形ファイル名をsmx.vcdとしてファイルディスクリプタをオープン
@@ -41,24 +41,23 @@ int main(int argc, char **argv)
 	// -- ここまで
 
 	// 初期化（フォーマット）
-	dut->reset_n = 0;
 	dut->clk = 0;
-	dut->en = 0;
+	dut->rst = 0;
 
 	// 100単位時間ほどリセット状態を保持
 	// 状態を安定させるため？
-	while (time_counter < 106)
-	{
-		// 回路を実行（DUTを評価）
-		dut->eval();
-		tfp->dump(time_counter); // 波形ダンプ用の記述を追加
+	// while (time_counter < 100)
+	// {
+	// 	// 回路を実行（DUTを評価）
+	// 	dut->eval();
+	// 	tfp->dump(time_counter); // 波形ダンプ用の記述を追加
 
-		time_counter++;
-	}
+	// 	time_counter++;
+	// }
 
 	// リセットをリリースし、シミュレーション開始
 	// カウンターが動き出す
-	dut->reset_n = 1;
+	// dut->rst = 1;
 
 	// クロックサイクルの記録
 	int cycle = 0;
@@ -85,16 +84,16 @@ int main(int argc, char **argv)
 		// 50単位時間に１回有効
 		// → 400/50 = 8
 		// ここはサイクル重視！
-		if (cycle % 5 == 0)
-		{
-			// 有効化
-			dut->en = 1; // Assert En
-		}
-		else
-		{
-			// 無効化
-			dut->en = 0; // Deassert En
-		}
+		// if (cycle % 5 == 0)
+		// {
+		// 	// 有効化
+		// 	dut->en = 1; // Assert En
+		// }
+		// else
+		// {
+		// 	// 無効化
+		// 	dut->en = 0; // Deassert En
+		// }
 
 		// 毎単位時間にDUTを評価（回路を動かす）
 		dut->eval();
@@ -105,8 +104,7 @@ int main(int argc, char **argv)
 
 	// 所定時間シミュレーションを実行すると終了し、最後に結果dut->cntを出力する
 	// std::cout << "Final Counter Value = " << dut->cnt << '\n';
-	printf("Final Counter Value = %d\n", dut->cnt);
-	printf("Final Counter_a Value = %d\n", dut->cnt_a);
+	printf("Final Led Value = %d\n", dut->led);
 
 	// インスタンスした回路を終了させる
 	dut->final();

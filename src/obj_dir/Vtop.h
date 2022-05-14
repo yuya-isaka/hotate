@@ -12,6 +12,7 @@
 
 class Vtop__Syms;
 class Vtop___024root;
+class VerilatedFstC;
 
 // This class is the main interface to the Verilated model
 class Vtop VL_NOT_FINAL {
@@ -61,6 +62,8 @@ class Vtop VL_NOT_FINAL {
     void eval_end_step() {}
     /// Simulation complete, run final blocks.  Application must call on completion.
     void final();
+    /// Trace signals in the model; called by application code
+    void trace(VerilatedFstC* tfp, int levels, int options = 0);
     /// Return current simulation context for this model.
     /// Used to get to e.g. simulation time via contextp()->time()
     VerilatedContext* contextp() const;

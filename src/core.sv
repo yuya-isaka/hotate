@@ -144,12 +144,15 @@ module core (
 
   // Register ----------------------------------------------------------------------------------------------------
 
-  typedef struct packed {
-    logic [31:0] rs1_data, rs2_data; // wire
-    logic [31:0] rd_data; // wire
-  } register_file;
+  // typedef struct packed {
+  //   logic [31:0] rs1_data, rs2_data; // wire
+  //   logic [31:0] rd_data; // wire
+  // } register_file;
 
-  register_file rf;
+  // register_file rf;
+  // verilator
+  logic [31:0] rs1_data, rs2_data; // wire
+  logic [31:0] rd_data; // wire
 
   // Register (always_ffで代入するからreg)
   // (むしろ値を持っておきたいから、regで、regだからalways_ffって方が正しいか、因果関係が逆)
@@ -164,8 +167,8 @@ module core (
     end
   endtask
 
-  assign rf.rs1_data = (de.rs1 == 5'd0) ? 32'd0 : register[de.rs1];
-  assign rf.rs2_data = (de.rs2 == 5'd0) ? 32'd0 : register[de.rs2];
+  assign rs1_data = (de.rs1 == 5'd0) ? 32'd0 : register[de.rs1];
+  assign rs2_data = (de.rs2 == 5'd0) ? 32'd0 : register[de.rs2];
   assign data_seg = register[5'd10];
 
   always_ff @(posedge clk) begin
@@ -173,7 +176,7 @@ module core (
       init_rf();
     end
     else if (state_wb) begin
-      register[de.rd] <= rf.rd_data;
+      register[de.rd] <= rd_data;
     end
   end
 
@@ -183,8 +186,8 @@ module core (
 
   // 演算
   alu Alu (
-    .rs1_data(rf.rs1_data),
-    .rs2_data(rf.rs2_data),
+    .rs1_data(rs1_data),
+    .rs2_data(rs2_data),
 
     .imm_data(de.imm),
 
@@ -215,9 +218,9 @@ module core (
   // データメモリ書き込み
   assign dmem.write_addr = alu_out;
   // ↓verilatorに怒られたので変
-  assign dmem.write_data = (de.funct3 == 3'b000) ? {24'b0, rf.rs2_data[7:0]} :
-                           (de.funct3 == 3'b001) ? {16'b0, rf.rs2_data[15:0]} :
-                           rf.rs2_data;
+  assign dmem.write_data = (de.funct3 == 3'b000) ? {24'b0, rs2_data[7:0]} :
+                           (de.funct3 == 3'b001) ? {16'b0, rs2_data[15:0]} :
+                           rs2_data;
   assign dmem.write_enable = state_ma && de._store;
 
   // データメモリ読み込み/書き込み
@@ -237,19 +240,19 @@ module core (
 
   always_comb begin
     if (de._jal || de._jalr) begin
-      rf.rd_data = pc + 32'd4;
+      rd_data = pc + 32'd4;
     end
     else if (de._load) begin
-      rf.rd_data = dmem.read_data;
+      rd_data = dmem.read_data;
     end
     else if (de._lui) begin
-      rf.rd_data = de.imm;
+      rd_data = de.imm;
     end
     else if (de._auipc) begin
-      rf.rd_data = pc + de.imm;
+      rd_data = pc + de.imm;
     end
     else begin
-      rf.rd_data = alu_out;
+      rd_data = alu_out;
     end
   end
 
@@ -272,7 +275,7 @@ module core (
           pc <= pc + de.imm;
         end
         else if (de._jalr) begin
-          pc <= rf.rs1_data + de.imm;
+          pc <= rs1_data + de.imm;
         end
         else if (de._lui) begin
           pc <= pc + 32'd4;
