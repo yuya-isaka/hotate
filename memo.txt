@@ -127,3 +127,9 @@ https://qiita.com/ikwzm/items/a0120079d2f7f86a5904
 RISC-Vのコードモデルについて
 https://msyksphinz.hatenablog.com/entry/2020/05/04/040000
 https://msyksphinz.hatenablog.com/entry/2020/05/05/040000
+
+
+自作CPU＆自作OSをやっていく
+・https://laysakura.github.io/2020/01/31/handcraft-cpu-os-1/
+・https://laysakura.github.io/2020/02/03/handcraft-cpu-os-2/
+・https://laysakura.github.io/2020/02/09/handcraft-cpu-os-3/
