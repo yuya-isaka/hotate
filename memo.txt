@@ -4,6 +4,10 @@
 
 hotateはパラメータを利用してモジュールに引数渡したり、色々工夫できている。
 
+目標
+・https://github.com/riscv-software-src/riscv-tests/tree/master/benchmarks
+・RISC-V標準ベンチマークアプリケーションを爆速実行できるCPUとOSを作る。
+
 改善案
 ・全体,ファイル名と変数名
 ・全体,型のパラメータ化(https://qiita.com/taichi-ishitani/items/ceee94d612c10bd08376)
@@ -115,21 +119,78 @@ Verilatorの使い方
 
 
 kivantiumさんのverilog文法について
-https://kivantium.hateblo.jp/entry/2016/09/17/191638
+・https://kivantium.hateblo.jp/entry/2016/09/17/191638
 
-http://japanese.sugawara-systems.com/tutorial/verilog/framepage7.htm
-
+verilog文法について
+・http://japanese.sugawara-systems.com/tutorial/verilog/framepage7.htm
+・https://dora.bk.tsukuba.ac.jp/~takeuchi/?%E9%9B%BB%E6%B0%97%E5%9B%9E%E8%B7%AF%2FHDL%2FVerilog%E3%81%A7%E7%8A%AF%E3%81%97%E3%81%8C%E3%81%A1%E3%81%AA%E8%A8%98%E8%BF%B0%E3%83%9F%E3%82%B9
 
 Vivado Tclスクリプト
-https://qiita.com/ikwzm/items/a0120079d2f7f86a5904
+・https://qiita.com/ikwzm/items/a0120079d2f7f86a5904
 
 
 RISC-Vのコードモデルについて
-https://msyksphinz.hatenablog.com/entry/2020/05/04/040000
-https://msyksphinz.hatenablog.com/entry/2020/05/05/040000
+・https://msyksphinz.hatenablog.com/entry/2020/05/04/040000
+・https://msyksphinz.hatenablog.com/entry/2020/05/05/040000
 
 
-自作CPU＆自作OSをやっていく
+自作CPU＆自作OSをやっていく(そんなに参考にならんかも、chisel)
 ・https://laysakura.github.io/2020/01/31/handcraft-cpu-os-1/
 ・https://laysakura.github.io/2020/02/03/handcraft-cpu-os-2/
 ・https://laysakura.github.io/2020/02/09/handcraft-cpu-os-3/
+
+
+自作CPUの話、勉強になる
+UARTについてとか
+・https://travelingresearcher.com/entry/2018/02/27/172417
+
+RustでRISC-V OS自作
+・https://qiita.com/tomoyuki-nakabayashi/items/76f912adb6b7da6030c7
+64bit版
+・https://laysakura.github.io/2020/02/03/handcraft-cpu-os-2/
+
+RISC-V testの挙動
+・https://laysakura.github.io/2020/02/09/handcraft-cpu-os-3/
+
+Rustで始める自作組み込みOS
+・https://garasubo.github.io/embedded-book/
+
+色々まとめ
+・https://www.notion.so/OS-etc-Wiki-a4461ce365ca46808ba88e8343435ee1
+
+RISC Vに従うCPUの上で動作するOSをRustで書く（CPU実験余興）
+・https://moraprogramming.hateblo.jp/entry/2019/03/17/165802
+↓
+これを参考に、RISC-Vに従うCPUの上で動作するKOZOSをRustで書く
+ってのができるかも
+
+RISC-V OSを作ろう
+・https://valinux.hatenablog.com/entry/20210527
+
+KOZOSをRISC-Vに移植したやつもあったはず
+
+
+自作RISC-Vコアにおける浮動小数点命令サポートの検討
+・https://msyksphinz.hatenablog.com/entry/2022/02/13/040000
+自作CPUコアでは命令定義をJSONで管理して、デコーダを自動生成するようにしている
+浮動小数点レジスタファイルの追加
+浮動小数点演算としては、オープンソースのFPUとしてFPNewを使用
+
+RISC-V命令拡張の考え方について
+・https://msyksphinz.hatenablog.com/entry/2017/10/15/020000
+
+キャッシュの話
+・https://gist.github.com/wanabe/3fc111a4665e60d3e0dc25a6e46a333d
+
+Verilatorとか独自に書き換えてオプションとか追加してるの笑う
+・https://msyksphinz.hatenablog.com/entry/2021/03/26/040000
+
+Verilator以外のシミュレーション、Vivado
+hassyさんもこの方法だった
+・https://msyksphinz.hatenablog.com/entry/2021/02/11/040000
+
+
+RISC-VコアとRAMを用意して、
+RAMにELFファイルのデータを流し込む仕組み
+SiFiveのDTMが使える。外部からデータをやりとりするためのポート
+・https://msyksphinz.hatenablog.com/entry/2021/02/03/040000
