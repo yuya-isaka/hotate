@@ -8,11 +8,14 @@ module seven (
 	seg
 );
 
+	// ポート
 	input wire clk, rst;
 	input wire [15:0] data_seg;
 	output logic [3:0] anode; 	// wire
 	output logic [6:0] seg; 	// wire
 
+	// デコード関数（4bitのバイナリ → 7bitのコード（どこを光らせるか）
+	// 0のところが光る
    	function [6:0] decode (input [3:0] binary);
    	   begin
    	      case (binary)
@@ -36,8 +39,10 @@ module seven (
    	   end
    	endfunction
 
+	// regだからalways_ffで更新する
    	reg [31:0] seg_counter;
 
+	// カウンターを高速に4回切り替えるための動作
    	always_ff @(posedge clk) begin
    		if (rst) begin
 			seg_counter <= 32'd0;
@@ -50,6 +55,7 @@ module seven (
 		end
    	end
 
+	// カウンターの値に従い、4回に分けて、各７segの値を更新
    	always_comb begin
    	   if (seg_counter < 32'd100000) begin
    	      anode = 4'b1110;

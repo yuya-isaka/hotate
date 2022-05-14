@@ -7,19 +7,25 @@ module core (
   data_seg
 );
 
+  // ポート
   input wire clk, rst;
   output wire [15:0] led;
   output wire [15:0] data_seg;
+
+  // パラメータ ---------------------------------------------------------------------
 
   parameter INST_MEM_SIZE = 32'd1024;
   parameter INST_ADDR_SIZE = 32'd9;
   parameter DATA_MEM_SIZE = 32'd4096;
   parameter DATA_ADDR_SIZE = 32'd10;
 
+  // PC (WBで更新) ---------------------------------------------------------------------------
+
   // Program counter (regだからalways_ffで代入)
   reg [31:0] pc;
 
   // Initialize pc
+  // regは初期化必要？
   task init_pc;
     begin
       pc <= 32'd0;
@@ -29,11 +35,15 @@ module core (
   // Update led
   assign led = pc[15:0];
 
+  // State machine --------------------------------------------------------------------------------------------------
+
   // State (always_ffで代入するからreg)
   // logicでも良い
+  // enumにできない？？
   reg state_idle, state_if, state_de, state_ex, state_ma, state_wb;
 
   // Initialize state
+  // regは初期化必要
   task init_state;
     begin
       state_idle <= 7'd1;
@@ -74,7 +84,7 @@ module core (
     end
   end
 
-  // Instruction Fetch
+  // Instruction Fetch ----------------------------------------------------------------------------------------
 
   // Instruction memory
   typedef struct {
@@ -94,7 +104,7 @@ module core (
     .inst(imem.inst)
   );
 
-  // Instruction Decode
+  // Instruction Decode --------------------------------------------------------------------------------------------
 
   typedef struct {
     logic [4:0]   rs1, rs2;   // wire
@@ -130,6 +140,8 @@ module core (
     .auipc(de._auipc)
   );
 
+  // Register ----------------------------------------------------------------------------------------------------
+
   typedef struct {
     logic [31:0] rs1_data, rs2_data; // wire
     logic [31:0] rd_data; // wire
@@ -141,6 +153,7 @@ module core (
   // (むしろ値を持っておきたいから、regで、regだからalways_ffって方が正しいか、因果関係が逆)
   reg [31:0] register [31:0];
 
+  // regの配列は初期化が必要（レジスタは初期化必要？）
   task init_rf;
     begin
       for(int i=0; i<32; i++) begin
@@ -162,9 +175,11 @@ module core (
     end
   end
 
+  // Execute ----------------------------------------------------------------------------------------------
+
   logic [31:0] alu_out; // wire
 
-  // Execution
+  // 演算
   alu Alu (
     .rs1_data(rf.rs1_data),
     .rs2_data(rf.rs2_data),
@@ -184,7 +199,7 @@ module core (
   );
 
 
-  // Memory Access
+  // Memory Access --------------------------------------------------------------------------------------------------
 
   typedef struct {
     logic [31:0]  read_addr, read_data, write_addr, write_data; // read_addr, write_addr, write_data ... wire
@@ -193,13 +208,16 @@ module core (
 
   data_memory dmem;
 
+  // データメモリ読み込み
   assign dmem.read_addr = alu_out;
+  // データメモリ書き込み
   assign dmem.write_addr = alu_out;
   assign dmem.write_data = (de.funct3 == 3'b000) ? rf.rs2_data[7:0] :
                            (de.funct3 == 3'b001) ? rf.rs2_data[15:0] :
                            rf.rs2_data;
   assign dmem.write_enable = state_ma && de._store;
 
+  // データメモリ読み込み/書き込み
   memoryData #(.MEM_SIZE(DATA_MEM_SIZE), .ADDR_SIZE(DATA_ADDR_SIZE)) Dmem (
     .clk(clk),
     .rst(rst),
@@ -212,8 +230,7 @@ module core (
     .write_enable(dmem.write_enable)
   );
 
-
-  // Write back
+  // Write back ---------------------------------------------------------------------------------------------------------
 
   always_comb begin
     if (de._jal || de._jalr) begin
@@ -267,7 +284,8 @@ module core (
     end
   end
 
-  // Initialize
+  // Initialize ------------------------------------------------------------------------------------------
+
   initial begin
     init_pc();
     init_state();
