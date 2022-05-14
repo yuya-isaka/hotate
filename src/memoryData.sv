@@ -11,14 +11,17 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
   write_enable
 );
 
+  // ポート
   input wire clk, rst;
   input wire [31:0] read_addr, write_addr, write_data;
   input wire write_enable;
-  output reg [31:0] read_data;
+  output reg [31:0] read_data; // always_ffで代入する先だから、reg??
 
+  // BRAM
   (* ram_style = "block" *)
-  logic [31:0] mem [MEM_SIZE-1:0];
+  logic [31:0] mem [MEM_SIZE-1:0]; // 多分reg
 
+  // 命令メモリと違って、readmemhしないため、初期化する必要がある。
   task init_mem;
     begin
       for(int i=0; i<MEM_SIZE; i++) begin
@@ -32,6 +35,7 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
   end
 
   always_ff @(posedge clk) begin
+    // リセットのたびに初期化
     if (rst) begin
       init_mem();
     end else begin

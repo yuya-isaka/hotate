@@ -16,7 +16,7 @@ module core (
   parameter DATA_MEM_SIZE = 32'd4096;
   parameter DATA_ADDR_SIZE = 32'd10;
 
-  // Program counter
+  // Program counter (regだからalways_ffで代入)
   reg [31:0] pc;
 
   // Initialize pc
@@ -29,7 +29,8 @@ module core (
   // Update led
   assign led = pc[15:0];
 
-  // State
+  // State (always_ffで代入するからreg)
+  // logicでも良い
   reg state_idle, state_if, state_de, state_ex, state_ma, state_wb;
 
   // Initialize state
@@ -136,7 +137,8 @@ module core (
 
   register_file rf;
 
-  // Register
+  // Register (always_ffで代入するからreg)
+  // (むしろ値を持っておきたいから、regで、regだからalways_ffって方が正しいか、因果関係が逆)
   reg [31:0] register [31:0];
 
   task init_rf;

@@ -6,11 +6,13 @@ module top (
    seg
 );
 
+   // ポート (トップのポートはwire??)
    input wire clk, rst;
    output wire [15:0] led;
    output logic [3:0] anode;     // wire
    output logic [6:0] seg;       // wire
 
+   // CoreとSevenを繋ぐ架け橋
    wire [15:0] data_seg;
 
    // RISC-V core

@@ -20,7 +20,7 @@ module instructionDecode (
     auipc
 );
 
-    // ポート (基本ポートはwire)
+    // ポート (基本inputポートはwire, outputポートはregの時もある)
     input wire [31:0] inst;
     output wire [4:0] rs1, rs2, rd;
     output logic [31:0] imm;    // wire (always_comb内で使うからlogicを利用)

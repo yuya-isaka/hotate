@@ -11,8 +11,9 @@ module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 
   // ポート
   input wire clk, rst;
   input wire [31:0] addr;
-  output reg [31:0] inst;
+  output reg [31:0] inst; // always_ffで代入する先だから、reg??
 
+  // 処理
   (* ram_style = "block" *)
   reg [31:0] mem [MEM_SIZE-1:0];
 
@@ -20,7 +21,10 @@ module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 
     $readmemh("/home/isaka/hotate/test/fib.hex", mem);
   end
 
+  // output (rstがfalseの時、クロックと同期して代入、最初のリセットだけ？)
   always_ff @(posedge clk) begin
+    // リセットボタンが押されたときは、発動しなくて良い（readmemhで初期化されるから？）
+    // 逆に常にクロックごとに代入する意味はなんだ？
     if (!rst) begin
       inst <= mem[addr[ADDR_SIZE:2]];
     end
