@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 	// std::cout << "Final Counter Value = " << dut->cnt << '\n';
 	// printf("Final Led Value = %d\n", dut->led);
 	printf("Final Led Value = %d\n", dut->led);
-	printf("Final Seg Value = %d\n", dut->seg);
+	// printf("Final Seg Value = %d\n", dut->seg);
 
 	// インスタンスした回路を終了させる
 	dut->final();

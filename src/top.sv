@@ -1,16 +1,16 @@
 module top (
    clk,
    rst,
-   led,
-   anode,
-   seg
+   led
+   // anode
+   // seg
 );
 
    // ポート (トップのポートはwire??)
    input wire clk, rst;
    output wire [15:0] led;
-   output logic [3:0] anode;     // wire
-   output logic [6:0] seg;       // wire
+   // output logic [3:0] anode;     // wire
+   // output logic [6:0] seg;       // wire
 
    // CoreとSevenを繋ぐ架け橋
    wire [31:0] data_seg;
