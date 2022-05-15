@@ -75,7 +75,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
                                  >> 1U));
             __Vdlyvset__top__DOT__Core__DOT__Dmem__DOT__mem__v0 = 1U;
             __Vdlyvdim0__top__DOT__Core__DOT__Dmem__DOT__mem__v0 
-                = (0x3ffU & (vlSelf->top__DOT__Core__DOT__dmem[1U] 
+                = (0xfffU & (vlSelf->top__DOT__Core__DOT__dmem[1U] 
                              >> 3U));
         }
     }
@@ -90,13 +90,13 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     } else {
         vlSelf->top__DOT__Core__DOT____Vcellout__Dmem__read_data 
             = vlSelf->top__DOT__Core__DOT__Dmem__DOT__mem
-            [(0x3ffU & (vlSelf->top__DOT__Core__DOT__dmem[3U] 
+            [(0xfffU & (vlSelf->top__DOT__Core__DOT__dmem[3U] 
                         >> 3U))];
     }
     if ((1U & (~ (IData)(vlSelf->rst)))) {
         vlSelf->top__DOT__Core__DOT____Vcellout__Imem__inst 
             = vlSelf->top__DOT__Core__DOT__Imem__DOT__mem
-            [(0xffU & (IData)((vlSelf->top__DOT__Core__DOT__imem 
+            [(0x3fU & (IData)((vlSelf->top__DOT__Core__DOT__imem 
                                >> 0x22U)))];
         if (vlSelf->top__DOT__Core__DOT__state_wb) {
             __Vdlyvval__top__DOT__Core__DOT__register__v0 

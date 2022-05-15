@@ -12,10 +12,10 @@ module core (
 
   // パラメータ ---------------------------------------------------------------------
 
-  parameter INST_MEM_SIZE = 32'd1024;
-  parameter INST_ADDR_SIZE = 32'd9;
+  parameter INST_MEM_SIZE = 32'd64;
+  parameter INST_ADDR_SIZE = 32'd7;
   parameter DATA_MEM_SIZE = 32'd4096;
-  parameter DATA_ADDR_SIZE = 32'd11;
+  parameter DATA_ADDR_SIZE = 32'd13;
 
   // PC (WBで更新) ---------------------------------------------------------------------------
 

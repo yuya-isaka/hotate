@@ -36,7 +36,7 @@ VL_MODULE(Vtop___024root) {
     VlWide<3>/*65:0*/ top__DOT__Core__DOT__de;
     VlWide<5>/*128:0*/ top__DOT__Core__DOT__dmem;
     VlUnpacked<IData/*31:0*/, 32> top__DOT__Core__DOT__register;
-    VlUnpacked<IData/*31:0*/, 1024> top__DOT__Core__DOT__Imem__DOT__mem;
+    VlUnpacked<IData/*31:0*/, 64> top__DOT__Core__DOT__Imem__DOT__mem;
     VlUnpacked<IData/*31:0*/, 4096> top__DOT__Core__DOT__Dmem__DOT__mem;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 

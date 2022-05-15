@@ -15,7 +15,7 @@ VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
     // Init
     IData/*31:0*/ __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i;
     // Body
-    VL_READMEM_N(true, 32, 1024, 0, VL_CVT_PACK_STR_NW(17, Vtop__ConstPool__CONST_h787e27d1_0)
+    VL_READMEM_N(true, 32, 64, 0, VL_CVT_PACK_STR_NW(17, Vtop__ConstPool__CONST_h787e27d1_0)
                  ,  &(vlSelf->top__DOT__Core__DOT__Imem__DOT__mem)
                  , 0, ~0ULL);
     __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i = 0U;
@@ -831,7 +831,7 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__Core__DOT__alu_out = VL_RAND_RESET_I(32);
     VL_RAND_RESET_W(129, vlSelf->top__DOT__Core__DOT__dmem);
     vlSelf->top__DOT__Core__DOT____Vcellout__Dmem__read_data = VL_RAND_RESET_I(32);
-    for (int __Vi0=0; __Vi0<1024; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<64; ++__Vi0) {
         vlSelf->top__DOT__Core__DOT__Imem__DOT__mem[__Vi0] = VL_RAND_RESET_I(32);
     }
     vlSelf->top__DOT__Core__DOT__Decode__DOT__i_type = VL_RAND_RESET_I(1);
