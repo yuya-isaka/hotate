@@ -8,6 +8,9 @@ set_property PACKAGE_PIN W5 [get_ports clk]
     set_property IOSTANDARD LVCMOS33 [get_ports clk]
     create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk]
 
+# deal with warning in vivado
+set_property IS_ENABLED FALSE [get_drc_checks UTLZ-1]
+
 ## Switches
 #set_property PACKAGE_PIN V17 [get_ports {sw[0]}]
     #set_property IOSTANDARD LVCMOS33 [get_ports {sw[0]}]
