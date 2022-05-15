@@ -9,8 +9,8 @@ module top (
    input wire clk, rst;
    output wire [15:0] led;
 
-   wire [31:0] data_seg;
-   assign led = data_seg[15:0];
+   wire [15:0] data_seg;
+   assign led = data_seg;
 
 
    // RISC-V core

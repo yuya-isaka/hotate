@@ -8,7 +8,7 @@ module core (
 
   // ポート
   input wire clk, rst;
-  output wire [31:0] data_seg;
+  output wire [15:0] data_seg;
 
   // パラメータ ---------------------------------------------------------------------
 
@@ -20,7 +20,6 @@ module core (
   // PC (WBで更新) ---------------------------------------------------------------------------
 
   reg [31:0] pc;
-
 
   // State machine --------------------------------------------------------------------------------------------------
 
@@ -135,7 +134,7 @@ module core (
 
   assign rs1_data = (de.rs1 == 5'd0) ? 32'd0 : register[de.rs1];
   assign rs2_data = (de.rs2 == 5'd0) ? 32'd0 : register[de.rs2];
-  assign data_seg = register[5'd10];
+  assign data_seg = register[5'd10][15:0];
   // assign data_seg = imem.inst;
 
   always_ff @(posedge clk) begin
