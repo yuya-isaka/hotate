@@ -225,13 +225,12 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedFst* trace
                                            >> 0x20U))),32);
         tracep->chgIData(oldp+100,(vlSelf->top__DOT__Core__DOT____Vcellout__Imem__inst),32);
         tracep->chgIData(oldp+101,(vlSelf->top__DOT__Seven__DOT__seg_counter),32);
-        tracep->chgIData(oldp+102,(vlSelf->top__DOT__Seven__DOT__tmp),32);
     }
-    tracep->chgBit(oldp+103,(vlSelf->clk));
-    tracep->chgBit(oldp+104,(vlSelf->rst));
-    tracep->chgSData(oldp+105,(vlSelf->led),16);
-    tracep->chgCData(oldp+106,(vlSelf->anode),4);
-    tracep->chgCData(oldp+107,(vlSelf->seg),7);
+    tracep->chgBit(oldp+102,(vlSelf->clk));
+    tracep->chgBit(oldp+103,(vlSelf->rst));
+    tracep->chgSData(oldp+104,(vlSelf->led),16);
+    tracep->chgCData(oldp+105,(vlSelf->anode),4);
+    tracep->chgCData(oldp+106,(vlSelf->seg),7);
 }
 
 void Vtop___024root__trace_cleanup(void* voidSelf, VerilatedFst* /*unused*/) {
