@@ -23,7 +23,7 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
   // MEM_SIZE = 4096
   // ADDR_SIZE = 10 (4096なら11までいける？)
 
-  // BRAM
+  // RAM (BRAM)
   (* ram_style = "block" *)
   logic [31:0] mem [MEM_SIZE-1:0]; // 多分reg
 

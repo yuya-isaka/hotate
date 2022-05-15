@@ -16,7 +16,7 @@ module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 
   // MEM_SIZE = 1024
   // ADDR_SIZE = 9 (1024ならこれが最大？)
 
-  // 処理
+  // ROM (BRAM)
   (* ram_style = "block" *)
   reg [31:0] mem [MEM_SIZE-1:0];
 

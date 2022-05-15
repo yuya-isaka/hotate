@@ -89,7 +89,8 @@ module core (
 
   // Instruction memory
   // ↓ Verilatorはunpackな構造体をpackにする
-  typedef struct packed {
+  // typedef struct packed {
+  typedef struct {
     logic [31:0]  addr; // wire
     reg [31:0]    inst;
   } instruction_memory;
@@ -108,7 +109,8 @@ module core (
 
   // Instruction Decode --------------------------------------------------------------------------------------------
 
-  typedef struct packed {
+  // typedef struct packed {
+  typedef struct {
     logic [4:0]   rs1, rs2;   // wire
     logic [4:0]   rd;         // wire
     logic [2:0]   funct3;     // wire
@@ -206,7 +208,8 @@ module core (
 
   // Memory Access --------------------------------------------------------------------------------------------------
 
-  typedef struct packed {
+  // typedef struct packed {
+  typedef struct {
     logic [31:0]  read_addr, read_data, write_addr, write_data; // read_addr, write_addr, write_data ... wire
     logic         write_enable;
   } data_memory;
