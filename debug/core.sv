@@ -63,7 +63,7 @@ module core (
   // Instruction Fetch ----------------------------------------------------------------------------------------
 
   // Instruction memory
-  typedef struct packed {
+  typedef struct {
   // typedef struct {
     logic [31:0]  addr; // wire
     reg [31:0]    inst;
@@ -83,7 +83,7 @@ module core (
 
   // Instruction Decode --------------------------------------------------------------------------------------------
 
-  typedef struct packed {
+  typedef struct {
   // typedef struct {
     logic [4:0]   rs1, rs2;   // wire
     logic [4:0]   rd;         // wire
@@ -173,7 +173,7 @@ module core (
 
   // Memory Access --------------------------------------------------------------------------------------------------
 
-  typedef struct packed {
+  typedef struct {
   // typedef struct {
     logic [31:0]  read_addr, read_data, write_addr, write_data; // read_addr, write_addr, write_data ... wire
     logic         write_enable;
