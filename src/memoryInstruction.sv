@@ -30,9 +30,9 @@ module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 
     // リセットボタンが押されたときは、発動しなくて良い（readmemhで初期化されるから？）
     // 逆に常にクロックごとに代入する意味はなんだ？
     if (!rst) begin
-      // inst <= mem[addr[ADDR_SIZE:2]];
+      inst <= mem[addr[ADDR_SIZE:2]];
       // ↓ verilatorに怒られて変更
-      inst <= mem[addr[ADDR_SIZE:0]];
+      // inst <= mem[addr[ADDR_SIZE:0]];
     end
   end
 

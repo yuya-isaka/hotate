@@ -3,13 +3,11 @@
 module core (
   clk,
   rst,
-  led,
   data_seg
 );
 
   // ポート
   input wire clk, rst;
-  output wire [15:0] led;
   output wire [31:0] data_seg;
 
   // パラメータ ---------------------------------------------------------------------
@@ -33,7 +31,7 @@ module core (
   // endtask
 
   // Update led
-  assign led = pc[15:0];
+  // assign led = pc[31:0];
 
   // State machine --------------------------------------------------------------------------------------------------
 
@@ -172,6 +170,7 @@ module core (
   assign rs1_data = (de.rs1 == 5'd0) ? 32'd0 : register[de.rs1];
   assign rs2_data = (de.rs2 == 5'd0) ? 32'd0 : register[de.rs2];
   assign data_seg = register[5'd10];
+  // assign data_seg = imem.inst;
 
   always_ff @(posedge clk) begin
     if (rst) begin
@@ -298,6 +297,9 @@ module core (
   initial begin
     // init_pc();
     // init_state();
+    state_idle = 1'b1;
+    {state_if, state_de, state_ex, state_ma, state_wb} = 5'b0;
+    pc = 32'd0;
     init_rf();
   end
 

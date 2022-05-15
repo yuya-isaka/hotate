@@ -29,7 +29,7 @@ VL_MODULE(Vtop___024root) {
     CData/*6:0*/ __Vfunc_top__DOT__Seven__DOT__decode__6__Vfuncout;
     CData/*6:0*/ __Vfunc_top__DOT__Seven__DOT__decode__7__Vfuncout;
     CData/*0:0*/ __Vclklast__TOP__clk;
-    VL_OUT16(led,15,0);
+    VL_OUT(led,31,0);
     IData/*31:0*/ top__DOT__Core__DOT__pc;
     IData/*31:0*/ top__DOT__Core__DOT____Vcellout__Imem__inst;
     IData/*31:0*/ top__DOT__Core__DOT____Vcellout__Decode__imm;

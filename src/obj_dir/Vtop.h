@@ -29,7 +29,7 @@ class Vtop VL_NOT_FINAL {
     VL_IN8(&rst,0,0);
     VL_OUT8(&anode,3,0);
     VL_OUT8(&seg,6,0);
-    VL_OUT16(&led,15,0);
+    VL_OUT(&led,31,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.

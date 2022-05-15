@@ -2,7 +2,7 @@
 #include <verilated.h>
 #include "Vtop.h"
 // #include <verilated_vcd_c.h> // VCD出力用のインクルードファイル
-#include <verilated_fst_c.h>  // FST出力用のインクルードファイルを追加
+#include <verilated_fst_c.h> // FST出力用のインクルードファイルを追加
 
 // 初期化
 int time_counter = 0;
@@ -37,15 +37,15 @@ int main(int argc, char **argv)
 	VerilatedFstC *tfp = new VerilatedFstC;
 
 	dut->trace(tfp, 100); // Trace 100 levels of hierarchy
-	tfp->open("simx.fst");
+	tfp->open("hotate.fst");
 	// -- ここまで
 
 	// 初期化（フォーマット）
-	dut->clk = 0;
-	dut->rst = 0;
+	// dut->clk = 0;
+	// dut->rst = 1;
 
-	// 100単位時間ほどリセット状態を保持
-	// 状態を安定させるため？
+	// // 100単位時間ほどリセット状態を保持
+	// // 状態を安定させるため？
 	// while (time_counter < 100)
 	// {
 	// 	// 回路を実行（DUTを評価）
@@ -55,30 +55,32 @@ int main(int argc, char **argv)
 	// 	time_counter++;
 	// }
 
-	// リセットをリリースし、シミュレーション開始
-	// カウンターが動き出す
-	// dut->rst = 1;
+	// // リセットをリリースし、シミュレーション開始
+	// // カウンターが動き出す
+	// dut->rst = 0;
 
 	// クロックサイクルの記録
 	int cycle = 0;
 	// 500単位時間動作させる
 	// 現在time_counter==100なので残り400
 	// 回路が終了していない限り、評価する（終了している場合もあるから一応）
-	while (time_counter < 500 && !Verilated::gotFinish())
+	while (time_counter < 100000 && !Verilated::gotFinish())
 	{
 		// 5単位時間に１回 clkをトグル（スイッチ）
 		// ここは単位時間重視！
-		if ((time_counter % 5) == 0)
-		{
-			// トグル
-			dut->clk = !dut->clk; // Toggle clock
-		}
-		// クロックサイクルを数える
-		if ((time_counter % 10) == 0)
-		{
-			// Cycle Count
-			cycle++;
-		}
+		// if ((time_counter % 5) == 0)
+		// {
+		// 	// トグル
+		// 	dut->clk = !dut->clk; // Toggle clock
+		// }
+		// // クロックサイクルを数える
+		// if ((time_counter % 10) == 0)
+		// {
+		// 	// Cycle Count
+		// 	cycle++;
+		// }
+		dut->clk = !dut->clk; // Toggle clock
+		cycle++;
 
 		// 5サイクルに１回 en信号を有効化
 		// 50単位時間に１回有効
@@ -99,12 +101,16 @@ int main(int argc, char **argv)
 		dut->eval();
 		tfp->dump(time_counter); // 波形ダンプ用の記述を追加
 
+		// printf("Led Value = %d\n", dut->led);
+		// printf("Seg Value = %d\n", dut->seg);
 		time_counter++;
 	}
 
 	// 所定時間シミュレーションを実行すると終了し、最後に結果dut->cntを出力する
 	// std::cout << "Final Counter Value = " << dut->cnt << '\n';
+	// printf("Final Led Value = %d\n", dut->led);
 	printf("Final Led Value = %d\n", dut->led);
+	printf("Final Seg Value = %d\n", dut->seg);
 
 	// インスタンスした回路を終了させる
 	dut->final();

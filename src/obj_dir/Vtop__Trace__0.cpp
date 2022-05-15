@@ -228,7 +228,7 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedFst* trace
     }
     tracep->chgBit(oldp+102,(vlSelf->clk));
     tracep->chgBit(oldp+103,(vlSelf->rst));
-    tracep->chgSData(oldp+104,(vlSelf->led),16);
+    tracep->chgIData(oldp+104,(vlSelf->led),32);
     tracep->chgCData(oldp+105,(vlSelf->anode),4);
     tracep->chgCData(oldp+106,(vlSelf->seg),7);
 }

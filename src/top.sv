@@ -8,12 +8,13 @@ module top (
 
    // ポート (トップのポートはwire??)
    input wire clk, rst;
-   output wire [15:0] led;
+   output wire [31:0] led;
    output logic [3:0] anode;     // wire
    output logic [6:0] seg;       // wire
 
    // CoreとSevenを繋ぐ架け橋
    wire [31:0] data_seg;
+   assign led = data_seg;
 
 //    // 同期クロック生成
 //    // 10万分周
@@ -28,12 +29,11 @@ module top (
 
    // RISC-V core
    // input: clk, rst
-   // output: led, data_seg
+   // output: data_seg
    core Core (
       .clk(clk),
       .rst(rst),
 
-      .led(led),
       .data_seg(data_seg)
    );
 
