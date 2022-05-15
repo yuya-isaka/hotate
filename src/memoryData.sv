@@ -55,6 +55,8 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
         mem[write_addr[ADDR_SIZE:2]] <= write_data;
         // 下位２ビットを入れると、0->4->8となる。
         // これを避けるために、下位２ビットを無視して、0->1->2とする
+        // データのサイズが32ビットだから！！！！！
+        // 4バイトごとのアドレスになっているのは正しい。でもmemの中では番地は0->1->2でやりたいから、下位２ビットを無視する
         // ↓ verilatorに怒られて変更
         // mem[write_addr[ADDR_SIZE:0]] <= write_data;
       end
