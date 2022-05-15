@@ -1,16 +1,16 @@
 module top (
    clk,
    rst,
-   led
-   // anode
-   // seg
+   led,
+   anode,
+   seg
 );
 
    // ポート (トップのポートはwire??)
    input wire clk, rst;
    output wire [15:0] led;
-   // output logic [3:0] anode;     // wire
-   // output logic [6:0] seg;       // wire
+   output logic [3:0] anode;     // wire
+   output logic [6:0] seg;       // wire
 
    // CoreとSevenを繋ぐ架け橋
    wire [31:0] data_seg;
@@ -40,13 +40,13 @@ module top (
    // Dynamic display of 7 seg led
    // input: clk, rst, data_seg
    // output: anode, seg
-   // seven Seven (
-   //    .clk(clk),
-   //    .rst(rst),
+   seven Seven (
+      .clk(clk),
+      .rst(rst),
 
-   //    .data_seg(data_seg),
-   //    .anode(anode),
-   //    .seg(seg)
-   // );
+      .data_seg(data_seg),
+      .anode(anode),
+      .seg(seg)
+   );
 
 endmodule
