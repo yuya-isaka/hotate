@@ -40,13 +40,13 @@ module top (
    // Dynamic display of 7 seg led
    // input: clk, rst, data_seg
    // output: anode, seg
-   seven Seven (
-      .clk(clk),
-      .rst(rst),
+   // seven Seven (
+   //    .clk(clk),
+   //    .rst(rst),
 
-      .data_seg(data_seg),
-      .anode(anode),
-      .seg(seg)
-   );
+   //    .data_seg(data_seg),
+   //    .anode(anode),
+   //    .seg(seg)
+   // );
 
 endmodule
