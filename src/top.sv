@@ -43,8 +43,8 @@ module top (
    seven Seven (
       .clk(clk),
       .rst(rst),
-
       .data_seg(data_seg),
+
       .anode(anode),
       .seg(seg)
    );

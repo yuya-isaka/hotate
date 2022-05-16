@@ -25,7 +25,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     IData/*31:0*/ __Vdlyvval__top__DOT__Core__DOT__register__v0;
     CData/*0:0*/ __Vdlyvset__top__DOT__Core__DOT__register__v0;
     IData/*31:0*/ __Vdly__top__DOT__Core__DOT__pc;
-    SData/*8:0*/ __Vdlyvdim0__top__DOT__Core__DOT__Dmem__DOT__mem__v0;
+    SData/*9:0*/ __Vdlyvdim0__top__DOT__Core__DOT__Dmem__DOT__mem__v0;
     IData/*31:0*/ __Vdlyvval__top__DOT__Core__DOT__Dmem__DOT__mem__v0;
     CData/*0:0*/ __Vdlyvset__top__DOT__Core__DOT__Dmem__DOT__mem__v0;
     VlWide<3>/*95:0*/ __Vtemp_h936373d3__0;
@@ -75,14 +75,14 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
                                  >> 1U));
             __Vdlyvset__top__DOT__Core__DOT__Dmem__DOT__mem__v0 = 1U;
             __Vdlyvdim0__top__DOT__Core__DOT__Dmem__DOT__mem__v0 
-                = (0x1ffU & (vlSelf->top__DOT__Core__DOT__dmem[1U] 
+                = (0x3ffU & (vlSelf->top__DOT__Core__DOT__dmem[1U] 
                              >> 3U));
         }
     }
     if (vlSelf->rst) {
         __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__3__unnamedblk1__DOT__i = 0U;
-        while ((0x200U > __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__3__unnamedblk1__DOT__i)) {
-            vlSelf->top__DOT__Core__DOT__Dmem__DOT__mem[(0x1ffU 
+        while ((0x400U > __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__3__unnamedblk1__DOT__i)) {
+            vlSelf->top__DOT__Core__DOT__Dmem__DOT__mem[(0x3ffU 
                                                          & __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__3__unnamedblk1__DOT__i)] = 0U;
             __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__3__unnamedblk1__DOT__i 
                 = ((IData)(1U) + __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__3__unnamedblk1__DOT__i);
@@ -91,7 +91,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     } else {
         vlSelf->top__DOT__Core__DOT____Vcellout__Dmem__read_data 
             = vlSelf->top__DOT__Core__DOT__Dmem__DOT__mem
-            [(0x1ffU & (vlSelf->top__DOT__Core__DOT__dmem[3U] 
+            [(0x3ffU & (vlSelf->top__DOT__Core__DOT__dmem[3U] 
                         >> 3U))];
         vlSelf->top__DOT__Seven__DOT__seg_counter = 
             ((0x61a80U == vlSelf->top__DOT__Seven__DOT__seg_counter)
