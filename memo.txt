@@ -227,3 +227,15 @@ https://lpha-z.hatenablog.com/entry/2019/12/22/231500
 
 
 動作していないのは、クロックのタイミング制約の問題だと思う。
+
+
+
+Vivado Warning
+また、以下の設定もしておくとよいでしょう。
+
+set_property BITSTREAM.CONFIG.UNUSEDPIN Pullup [current_design]
+set_property CFGBVS <GND | VCCO> [current_design]
+set_property CONFIG_VOLTAGE <1.8 | 2.5 | 3.3> [current_design]
+CONFIG_VOLTAGE は Bank0 の VCCIO 電圧です。1.8V ならば CFGBVS は GND、2.5V と 3.3V の場合は VCCO と指定します。ただし、これは指定しなくても動きますし、指定が間違っていても動くので効果のほどはわかりません。
+
+[current_design] というのは、current_design というコマンドを実行して現在のデザインを示すオブジェクトを得ます。このオブジェクトに対して BITSTREAM.CONFIG.** というプロパティを設定するものです。current_design は、XDC でのコマンドであって、Tcl 本来の機能ではありません。

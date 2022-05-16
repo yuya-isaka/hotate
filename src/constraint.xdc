@@ -8,6 +8,11 @@ set_property PACKAGE_PIN W5 [get_ports clk]
     set_property IOSTANDARD LVCMOS33 [get_ports clk]
     create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk]
 
+#deal with warning in vivado (vivado missing cfgbvs and config_voltage)
+set_property BITSTREAM.CONFIG.UNUSEDPIN Pullup [current_design]
+set_property CFGBVS VCCO [current_design]
+set_property CONFIG_VOLTAGE 2.5 [current_design]
+
 # deal with warning in vivado
 # set_property IS_ENABLED FALSE [get_drc_checks UTLZ-1]
 
