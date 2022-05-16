@@ -14,8 +14,8 @@ module core (
 
   parameter INST_MEM_SIZE = 32'd64;
   parameter INST_ADDR_SIZE = 32'd7; // -2してもおっけい？
-  parameter DATA_MEM_SIZE = 32'd1024;
-  parameter DATA_ADDR_SIZE = 32'd11; // -2してもおっけい？
+  parameter DATA_MEM_SIZE = 32'd512;
+  parameter DATA_ADDR_SIZE = 32'd6; // -2してもおっけい？
 
   // PC (WBで更新)  ---------------------------------------------------------------------------
 
