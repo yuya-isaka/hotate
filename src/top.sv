@@ -18,6 +18,7 @@ module top (
 
 //    // 同期クロック生成
 //    // 1000分周
+// 10万分周
    reg [31:0] count; // こいつinialの初期化いるかも？
    initial begin
       count = 32'd0;
@@ -44,7 +45,7 @@ module top (
    // input: clk, rst, data_seg
    // output: anode, seg
    seven Seven (
-      .clk(sysclk),
+      .clk(clk),
       .rst(rst),
       .data_seg(data_seg),
 
