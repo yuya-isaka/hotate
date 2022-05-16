@@ -25,10 +25,10 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ top__DOT__Core__DOT__state_wb;
     CData/*0:0*/ top__DOT__Core__DOT__Decode__DOT__i_type;
     CData/*0:0*/ top__DOT__Core__DOT__Decode__DOT__u_type;
-    CData/*6:0*/ __Vfunc_top__DOT__Seven__DOT__decode__3__Vfuncout;
     CData/*6:0*/ __Vfunc_top__DOT__Seven__DOT__decode__4__Vfuncout;
     CData/*6:0*/ __Vfunc_top__DOT__Seven__DOT__decode__5__Vfuncout;
     CData/*6:0*/ __Vfunc_top__DOT__Seven__DOT__decode__6__Vfuncout;
+    CData/*6:0*/ __Vfunc_top__DOT__Seven__DOT__decode__7__Vfuncout;
     CData/*0:0*/ __Vclklast__TOP__clk;
     CData/*0:0*/ __Vclklast__TOP__top__DOT__sysclk;
     VL_OUT16(led,15,0);
@@ -42,10 +42,10 @@ VL_MODULE(Vtop___024root) {
     IData/*31:0*/ top__DOT__Core__DOT____Vcellout__Dmem__read_data;
     IData/*31:0*/ top__DOT__Core__DOT__Alu__DOT__op2;
     IData/*31:0*/ top__DOT__Seven__DOT__seg_counter;
-    IData/*31:0*/ __Vfunc_top__DOT__Seven__DOT__decode__3__binary;
     IData/*31:0*/ __Vfunc_top__DOT__Seven__DOT__decode__4__binary;
     IData/*31:0*/ __Vfunc_top__DOT__Seven__DOT__decode__5__binary;
     IData/*31:0*/ __Vfunc_top__DOT__Seven__DOT__decode__6__binary;
+    IData/*31:0*/ __Vfunc_top__DOT__Seven__DOT__decode__7__binary;
     QData/*63:0*/ top__DOT__Core__DOT__imem;
     VlWide<3>/*65:0*/ top__DOT__Core__DOT__de;
     VlWide<5>/*128:0*/ top__DOT__Core__DOT__dmem;
