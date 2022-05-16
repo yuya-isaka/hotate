@@ -45,7 +45,7 @@ module top (
    // input: clk, rst, data_seg
    // output: anode, seg
    seven Seven (
-      .clk(clk),
+      .clk(sysclk),
       .rst(rst),
       .data_seg(data_seg),
 
