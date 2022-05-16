@@ -386,5 +386,5 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
     tracep->fullIData(oldp+108,(0x40U),32);
     tracep->fullIData(oldp+109,(7U),32);
     tracep->fullIData(oldp+110,(0x200U),32);
-    tracep->fullIData(oldp+111,(6U),32);
+    tracep->fullIData(oldp+111,(0xaU),32);
 }

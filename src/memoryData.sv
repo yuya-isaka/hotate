@@ -24,8 +24,8 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
   // ADDR_SIZE = 10 (4096なら11までいける？)
 
   // RAM (BRAM)
-  (* ram_style = "block" *)
-  logic [31:0] mem [MEM_SIZE-1:0]; // 多分reg
+  // (* ram_style = "block" *) reg [31:0] mem [MEM_SIZE-1:0]; // 多分reg
+  (* ram_style = "block" *) reg [31:0] mem [2**(ADDR_SIZE-2+1)-1:0]; // 多分reg
 
   // 命令メモリと違って、readmemhしないため、初期化する必要がある。
   // メモリ初期化(全要素初期化しないと初期化が無視される)

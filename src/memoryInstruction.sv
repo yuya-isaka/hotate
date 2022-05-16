@@ -17,8 +17,8 @@ module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 
   // ADDR_SIZE = 9 (1024ならこれが最大？)
 
   // ROM (BRAM)
-  (* ram_style = "block" *)
-  reg [31:0] mem [MEM_SIZE-1:0];
+  // (* ram_style = "block" *) reg [31:0] mem [MEM_SIZE-1:0];
+  (* ram_style = "block" *) reg [31:0] mem [2**(ADDR_SIZE-2+1)-1:0];
 
   initial begin
     // $readmemh("/home/isaka/hotate/test/fib.hex", mem);
