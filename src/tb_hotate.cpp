@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 	// 500単位時間動作させる
 	// 現在time_counter==100なので残り400
 	// 回路が終了していない限り、評価する（終了している場合もあるから一応）
-	while (time_counter < 100000 && !Verilated::gotFinish())
+	while (time_counter < 100000000 && !Verilated::gotFinish())
 	{
 		// 5単位時間に１回 clkをトグル（スイッチ）
 		// ここは単位時間重視！

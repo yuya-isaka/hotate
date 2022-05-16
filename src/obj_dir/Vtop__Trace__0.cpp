@@ -231,6 +231,8 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedFst* trace
     tracep->chgSData(oldp+104,(vlSelf->led),16);
     tracep->chgCData(oldp+105,(vlSelf->anode),4);
     tracep->chgCData(oldp+106,(vlSelf->seg),7);
+    tracep->chgIData(oldp+107,(vlSelf->top__DOT__count),32);
+    tracep->chgBit(oldp+108,(vlSelf->top__DOT__sysclk));
 }
 
 void Vtop___024root__trace_cleanup(void* voidSelf, VerilatedFst* /*unused*/) {
