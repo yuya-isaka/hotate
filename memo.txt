@@ -207,3 +207,23 @@ resetボタンは用意しなくていいのか？
 
 
 make push M="add makefile"
+
+
+何個までBRAM使える？
+https://scrapbox.io/htkymtks/%E4%BD%95%E5%80%8B%E3%81%BE%E3%81%A7BRAM%E3%82%92%E4%BD%BF%E3%81%88%E3%82%8B%EF%BC%9F
+
+[Synth 8-6849] Infeasible attribute ram_style = “block” set for RAM “memory_array_name”,trying to implement using LUTRAM
+との Warning が出て、 BRAM が推定されなかったことがわかります (LUTRAM はDistributed RAM のこと) 。
+
+・LUTをやたら使っている理由がわからない。。。。。
+Block RAMを使えていない理由はわからないけど、
+とりあえずこれを参考にしてみた。
+https://lpha-z.hatenablog.com/entry/2019/12/22/231500
+でもrstを削除するのは特に関係ない気がする。。。
+
+あと　ram_style="block"の指定をしていると、推論されなかったときに指摘されるって書いてるけど
+全然指摘してくれない。。。でもLUTの数は変わっている。不思議。
+
+
+
+動作していないのは、クロックのタイミング制約の問題だと思う。
