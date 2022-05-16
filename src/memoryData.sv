@@ -43,9 +43,9 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
 
   always_ff @(posedge clk) begin
     // リセットのたびに初期化
-    // if (rst) begin
-    //   init_mem();
-    // end else begin
+    if (rst) begin
+      init_mem();
+    end else begin
       // read
       read_data <= mem[read_addr[ADDR_SIZE:2]];
       // ↓ verilatorに怒られて変更
@@ -60,7 +60,7 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
         // ↓ verilatorに怒られて変更
         // mem[write_addr[ADDR_SIZE:0]] <= write_data;
       end
-    // end
+    end
   end
 
 endmodule
