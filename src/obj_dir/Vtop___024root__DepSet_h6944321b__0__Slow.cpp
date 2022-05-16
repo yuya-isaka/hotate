@@ -19,8 +19,8 @@ VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
                  ,  &(vlSelf->top__DOT__Core__DOT__Imem__DOT__mem)
                  , 0, ~0ULL);
     __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i = 0U;
-    while ((0x1000U > __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i)) {
-        vlSelf->top__DOT__Core__DOT__Dmem__DOT__mem[(0xfffU 
+    while ((0x200U > __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i)) {
+        vlSelf->top__DOT__Core__DOT__Dmem__DOT__mem[(0x1ffU 
                                                      & __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i)] = 0U;
         __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i 
             = ((IData)(1U) + __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i);
@@ -962,7 +962,7 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__Core__DOT__Decode__DOT__i_type = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__Core__DOT__Decode__DOT__u_type = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__Core__DOT__Alu__DOT__op2 = VL_RAND_RESET_I(32);
-    for (int __Vi0=0; __Vi0<4096; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<512; ++__Vi0) {
         vlSelf->top__DOT__Core__DOT__Dmem__DOT__mem[__Vi0] = VL_RAND_RESET_I(32);
     }
     vlSelf->top__DOT__Seven__DOT__seg_counter = VL_RAND_RESET_I(32);
