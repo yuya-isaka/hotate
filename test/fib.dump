@@ -44,6 +44,6 @@ Disassembly of section .text:
   78:	00112623          	sw	ra,12(sp)
   7c:	00812423          	sw	s0,8(sp)
   80:	01010413          	addi	s0,sp,16
-  84:	00a00513          	li	a0,10
+  84:	00900513          	li	a0,9
   88:	f7dff0ef          	jal	ra,4 <fib>
   8c:	0000006f          	j	8c <main+0x18>
