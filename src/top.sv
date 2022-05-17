@@ -32,7 +32,8 @@ module top (
    reg28,
    reg29,
    reg30,
-   reg31
+   reg31,
+   pcout
    // led,
    // anode,
    // seg
@@ -72,6 +73,7 @@ module top (
    output wire [31:0] reg29;
    output wire [31:0] reg30;
    output wire [31:0] reg31;
+   output wire [31:0] pcout;
    // output logic [3:0] anode;     // wire
    // output logic [6:0] seg;       // wire
 
@@ -131,7 +133,8 @@ module top (
       .reg28(reg28),
       .reg29(reg29),
       .reg30(reg30),
-      .reg31(reg31)
+      .reg31(reg31),
+      .pcout(pcout)
    );
 
    // Dynamic display of 7 seg led

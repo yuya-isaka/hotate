@@ -34,7 +34,8 @@ module core (
   reg28,
   reg29,
   reg30,
-  reg31
+  reg31,
+  pcout
 );
 
   // ポート
@@ -71,6 +72,7 @@ module core (
   output wire [31:0] reg29;
   output wire [31:0] reg30;
   output wire [31:0] reg31;
+  output wire [31:0] pcout;
 
   // パラメータ ---------------------------------------------------------------------
 
@@ -83,6 +85,8 @@ module core (
 
   // Program counter (regだからalways_ffで代入)
   reg [31:0] pc;
+
+  assign pcout = pc;
 
   // Initialize pc
   // regは初期化必要？
@@ -271,7 +275,12 @@ module core (
       init_rf();
     end
     else if (state_wb) begin
-      register[de.rd] <= rd_data;
+      if (de.rd == 5'd0) begin
+        register[de.rd] <= 32'd0;
+      end
+      else begin
+        register[de.rd] <= rd_data;
+      end
     end
   end
 
@@ -314,8 +323,10 @@ module core (
   // データメモリ書き込み
   assign dmem.write_addr = alu_out;
   // ↓verilatorに怒られたので変
-  assign dmem.write_data = (de.funct3 == 3'b000) ? {24'b0, rs2_data[7:0]} :
-                           (de.funct3 == 3'b001) ? {16'b0, rs2_data[15:0]} :
+  // 符号拡張しろばか！
+  // ここまた確認！！！
+  assign dmem.write_data = (de.funct3 == 3'b000) ? {{24{rs2_data[7]}}, rs2_data[7:0]} :
+                           (de.funct3 == 3'b001) ? {{16{rs2_data[15]}}, rs2_data[15:0]} :
                            rs2_data;
   assign dmem.write_enable = state_ma && de._store;
 

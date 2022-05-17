@@ -58,7 +58,8 @@ module instructionDecode (
 
     // output
     assign funct3 = inst[14:12];
-    assign funct7 = (inst[6:0] == 7'b011011) ? inst[31:25] : 7'd0;
+    // mul関連のため、ここでめっちゃバグを経験。。。
+    assign funct7 = (inst[6:0] == 7'b0110011) ? inst[31:25] : 7'd0;
 
     // output
     assign arithmetic     	= (opcode == 7'b0110011) ? 1'd1 : 1'd0;

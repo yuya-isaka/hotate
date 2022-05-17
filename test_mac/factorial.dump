@@ -40,6 +40,6 @@ Disassembly of section .text:
   68:	00112623          	sw	ra,12(sp)
   6c:	00812423          	sw	s0,8(sp)
   70:	01010413          	addi	s0,sp,16
-  74:	00500513          	li	a0,5
+  74:	00a00513          	li	a0,10
   78:	f8dff0ef          	jal	ra,4 <factorial>
   7c:	0000006f          	j	7c <main+0x18>

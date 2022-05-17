@@ -6,8 +6,8 @@ hotateはパラメータを利用してモジュールに引数渡したり、�
 
 やりたいこと
 最低限の確認（シミュレーション上、FPGA実機）
-・M拡張がちゃんと動いているかチェックする（fac.c）
-・ノイマン型にしてみる（動く？）
+・coreのrs2の符号拡張について確認
+・テストスイート走らせてみる（rv32im）
 シリアル通信
 ・Uartをhotateで処理できる機構を追加（まずは送信だけで良い）
 ・minicomを使って通信して、hotateでC言語の"Hello World"を表示させる
@@ -278,3 +278,13 @@ current_design は、XDC でのコマンドであって、Tcl 本来の機能で
 
 コンパイラのパス確認
 	- which pk
+
+
+とりあえず-marchの設定は色々試して
+	riscv32-unknown-elf-gcc -march=rv32im -mabi=ilp32 -c -o start.o start.S
+	か
+	riscv32-unknown-linux-gnu-gcc -march=rv32id -c -o start.o start.S
+	riscv32-unknown-linux-gnu-gcc -march=rv32imd -c -o start.o start.S
+
+	とかに落ち着いている
+	-mabiを設定していない状況で、dを抜くとエラーになる。よくわからん。

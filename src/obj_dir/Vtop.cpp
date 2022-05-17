@@ -44,6 +44,7 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , reg29{vlSymsp->TOP.reg29}
     , reg30{vlSymsp->TOP.reg30}
     , reg31{vlSymsp->TOP.reg31}
+    , pcout{vlSymsp->TOP.pcout}
     , rootp{&(vlSymsp->TOP)}
 {
 }

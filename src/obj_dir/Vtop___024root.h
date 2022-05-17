@@ -55,6 +55,7 @@ VL_MODULE(Vtop___024root) {
     VL_OUT(reg29,31,0);
     VL_OUT(reg30,31,0);
     VL_OUT(reg31,31,0);
+    VL_OUT(pcout,31,0);
     IData/*31:0*/ top__DOT__Core__DOT__pc;
     IData/*31:0*/ top__DOT__Core__DOT____Vcellout__Imem__inst;
     IData/*31:0*/ top__DOT__Core__DOT____Vcellout__Decode__imm;

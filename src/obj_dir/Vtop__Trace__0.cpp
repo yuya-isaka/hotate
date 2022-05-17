@@ -190,7 +190,7 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedFst* trace
         tracep->chgIData(oldp+78,(vlSelf->top__DOT__Core__DOT____Vcellout__Decode__imm),32);
         tracep->chgCData(oldp+79,((7U & (IData)((vlSelf->top__DOT__Core__DOT__imem 
                                                  >> 0xcU)))),3);
-        tracep->chgCData(oldp+80,(((0x1bU == (0x7fU 
+        tracep->chgCData(oldp+80,(((0x33U == (0x7fU 
                                               & (IData)(vlSelf->top__DOT__Core__DOT__imem)))
                                     ? (0x7fU & (IData)(
                                                        (vlSelf->top__DOT__Core__DOT__imem 
@@ -257,6 +257,7 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedFst* trace
     tracep->chgIData(oldp+131,(vlSelf->reg29),32);
     tracep->chgIData(oldp+132,(vlSelf->reg30),32);
     tracep->chgIData(oldp+133,(vlSelf->reg31),32);
+    tracep->chgIData(oldp+134,(vlSelf->pcout),32);
 }
 
 void Vtop___024root__trace_cleanup(void* voidSelf, VerilatedFst* /*unused*/) {

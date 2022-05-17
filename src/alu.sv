@@ -21,6 +21,10 @@ module alu (
   input wire arithmetic, arithmetic_imm, store, load, branch;
   output logic [31:0] alu_out; // wire
 
+  // wire [31:0] _rs1_pn = rs1_data[31] ? ~32'b0 : 32'b0;
+  // wire [31:0] _rs2_pn = rs2_data[31] ? ~32'b0 : 32'b0;
+  // wire [63:0] _mulss = $signed({_rs1_pn, rs1_data} * $signed({_rs2_pn, rs2_data}));
+
   // 処理
   // logic [31:0] tmp_out; // wire
   wire [31:0] op2 = (arithmetic_imm || store || load) ? imm_data : rs2_data;
@@ -56,6 +60,8 @@ module alu (
         // でもちょっと間違ってそう．
         // MUL
         10'b0000001_000: alu_out = $signed(rs1_data) * $signed(op2);
+        // 10'b0000001_000: alu_out = rs1_data * op2;
+        // 10'b0000001_000: alu_out = _mulss[31:0];
         // MULH
         10'b0000001_001: begin
           // tmp_out = $signed(rs1_data) * $signed(op2);
