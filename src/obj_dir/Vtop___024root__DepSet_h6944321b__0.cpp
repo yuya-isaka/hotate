@@ -6,18 +6,6 @@
 
 #include "Vtop___024root.h"
 
-VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
-    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__0\n"); );
-    // Body
-    vlSelf->top__DOT__count = ((IData)(vlSelf->rst)
-                                ? 0U : ((0xaU == vlSelf->top__DOT__count)
-                                         ? 0U : ((IData)(1U) 
-                                                 + vlSelf->top__DOT__count)));
-    vlSelf->top__DOT__sysclk = (5U >= vlSelf->top__DOT__count);
-}
-
 extern const VlUnpacked<CData/*5:0*/, 64> Vtop__ConstPool__TABLE_h4a7513c7_0;
 extern const VlUnpacked<CData/*0:0*/, 64> Vtop__ConstPool__TABLE_h257aa433_0;
 extern const VlUnpacked<CData/*0:0*/, 64> Vtop__ConstPool__TABLE_h6cdfa4e7_0;
@@ -26,10 +14,10 @@ extern const VlUnpacked<CData/*0:0*/, 64> Vtop__ConstPool__TABLE_h09bf5bc9_0;
 extern const VlUnpacked<CData/*0:0*/, 64> Vtop__ConstPool__TABLE_h195d03e7_0;
 extern const VlUnpacked<CData/*0:0*/, 64> Vtop__ConstPool__TABLE_h366c77ba_0;
 
-VL_INLINE_OPT void Vtop___024root___sequent__TOP__1(Vtop___024root* vlSelf) {
+VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__1\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__0\n"); );
     // Init
     CData/*5:0*/ __Vtableidx1;
     CData/*4:0*/ __Vdlyvdim0__top__DOT__Core__DOT__register__v0;
@@ -92,15 +80,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__1(Vtop___024root* vlSelf) {
         = vlSelf->top__DOT__Core__DOT__Dmem__DOT__mem
         [(0x1ffU & (vlSelf->top__DOT__Core__DOT__dmem[3U] 
                     >> 3U))];
-    vlSelf->top__DOT__Seven__DOT__seg_counter = ((IData)(vlSelf->rst)
-                                                  ? 0U
-                                                  : 
-                                                 ((0x61a80U 
-                                                   == vlSelf->top__DOT__Seven__DOT__seg_counter)
-                                                   ? 0U
-                                                   : 
-                                                  ((IData)(1U) 
-                                                   + vlSelf->top__DOT__Seven__DOT__seg_counter)));
     vlSelf->top__DOT__Core__DOT____Vcellout__Imem__inst 
         = vlSelf->top__DOT__Core__DOT__Imem__DOT__mem
         [(0x3fU & (IData)((vlSelf->top__DOT__Core__DOT__imem 
@@ -196,130 +175,70 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__1(Vtop___024root* vlSelf) {
                                               & vlSelf->top__DOT__Core__DOT__dmem[3U]) 
                                              | (vlSelf->top__DOT__Core__DOT____Vcellout__Dmem__read_data 
                                                 >> 0x1fU));
-    vlSelf->anode = ((0x186a0U > vlSelf->top__DOT__Seven__DOT__seg_counter)
-                      ? 0xeU : ((0x30d40U > vlSelf->top__DOT__Seven__DOT__seg_counter)
-                                 ? 0xdU : ((0x493e0U 
-                                            > vlSelf->top__DOT__Seven__DOT__seg_counter)
-                                            ? 0xbU : 7U)));
-    vlSelf->led = (0xffffU & vlSelf->top__DOT__Core__DOT__register
-                   [0xaU]);
-    if ((0x186a0U > vlSelf->top__DOT__Seven__DOT__seg_counter)) {
-        vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary 
-            = VL_MODDIV_III(32, vlSelf->top__DOT__Core__DOT__register
-                            [0xaU], (IData)(0xaU));
-        vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__Vfuncout 
-            = ((8U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                ? ((4U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                    ? ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                            ? 0xeU : 6U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                                             ? 0x21U
-                                             : 0x46U))
-                    : ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                            ? 3U : 8U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                                           ? 0x10U : 0U)))
-                : ((4U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                    ? ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                            ? 0x58U : 2U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                                              ? 0x12U
-                                              : 0x19U))
-                    : ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                            ? 0x30U : 0x24U) : ((1U 
-                                                 & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__binary)
-                                                 ? 0x79U
-                                                 : 0x40U))));
-        vlSelf->seg = vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__3__Vfuncout;
-    } else if ((0x30d40U > vlSelf->top__DOT__Seven__DOT__seg_counter)) {
-        vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary 
-            = VL_MODDIV_III(32, VL_DIV_III(32, vlSelf->top__DOT__Core__DOT__register
-                                           [0xaU], (IData)(0xaU)), (IData)(0xaU));
-        vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__Vfuncout 
-            = ((8U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                ? ((4U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                    ? ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                            ? 0xeU : 6U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                                             ? 0x21U
-                                             : 0x46U))
-                    : ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                            ? 3U : 8U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                                           ? 0x10U : 0U)))
-                : ((4U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                    ? ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                            ? 0x58U : 2U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                                              ? 0x12U
-                                              : 0x19U))
-                    : ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                            ? 0x30U : 0x24U) : ((1U 
-                                                 & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__binary)
-                                                 ? 0x79U
-                                                 : 0x40U))));
-        vlSelf->seg = vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__4__Vfuncout;
-    } else if ((0x493e0U > vlSelf->top__DOT__Seven__DOT__seg_counter)) {
-        vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary 
-            = VL_MODDIV_III(32, VL_DIV_III(32, vlSelf->top__DOT__Core__DOT__register
-                                           [0xaU], (IData)(0x64U)), (IData)(0xaU));
-        vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__Vfuncout 
-            = ((8U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                ? ((4U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                    ? ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                            ? 0xeU : 6U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                                             ? 0x21U
-                                             : 0x46U))
-                    : ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                            ? 3U : 8U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                                           ? 0x10U : 0U)))
-                : ((4U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                    ? ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                            ? 0x58U : 2U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                                              ? 0x12U
-                                              : 0x19U))
-                    : ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                            ? 0x30U : 0x24U) : ((1U 
-                                                 & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__binary)
-                                                 ? 0x79U
-                                                 : 0x40U))));
-        vlSelf->seg = vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__5__Vfuncout;
-    } else {
-        vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary 
-            = VL_MODDIV_III(32, VL_DIV_III(32, vlSelf->top__DOT__Core__DOT__register
-                                           [0xaU], (IData)(0x3e8U)), (IData)(0xaU));
-        vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__Vfuncout 
-            = ((8U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                ? ((4U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                    ? ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                            ? 0xeU : 6U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                                             ? 0x21U
-                                             : 0x46U))
-                    : ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                            ? 3U : 8U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                                           ? 0x10U : 0U)))
-                : ((4U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                    ? ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                            ? 0x58U : 2U) : ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                                              ? 0x12U
-                                              : 0x19U))
-                    : ((2U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                        ? ((1U & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                            ? 0x30U : 0x24U) : ((1U 
-                                                 & vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__binary)
-                                                 ? 0x79U
-                                                 : 0x40U))));
-        vlSelf->seg = vlSelf->__Vfunc_top__DOT__Seven__DOT__decode__6__Vfuncout;
-    }
+    vlSelf->reg0 = vlSelf->top__DOT__Core__DOT__register
+        [0U];
+    vlSelf->reg1 = vlSelf->top__DOT__Core__DOT__register
+        [1U];
+    vlSelf->reg2 = vlSelf->top__DOT__Core__DOT__register
+        [2U];
+    vlSelf->reg3 = vlSelf->top__DOT__Core__DOT__register
+        [3U];
+    vlSelf->reg4 = vlSelf->top__DOT__Core__DOT__register
+        [4U];
+    vlSelf->reg5 = vlSelf->top__DOT__Core__DOT__register
+        [5U];
+    vlSelf->reg6 = vlSelf->top__DOT__Core__DOT__register
+        [6U];
+    vlSelf->reg7 = vlSelf->top__DOT__Core__DOT__register
+        [7U];
+    vlSelf->reg8 = vlSelf->top__DOT__Core__DOT__register
+        [8U];
+    vlSelf->reg9 = vlSelf->top__DOT__Core__DOT__register
+        [9U];
+    vlSelf->reg10 = vlSelf->top__DOT__Core__DOT__register
+        [0xaU];
+    vlSelf->reg11 = vlSelf->top__DOT__Core__DOT__register
+        [0xbU];
+    vlSelf->reg12 = vlSelf->top__DOT__Core__DOT__register
+        [0xcU];
+    vlSelf->reg13 = vlSelf->top__DOT__Core__DOT__register
+        [0xdU];
+    vlSelf->reg14 = vlSelf->top__DOT__Core__DOT__register
+        [0xeU];
+    vlSelf->reg15 = vlSelf->top__DOT__Core__DOT__register
+        [0xfU];
+    vlSelf->reg16 = vlSelf->top__DOT__Core__DOT__register
+        [0x10U];
+    vlSelf->reg17 = vlSelf->top__DOT__Core__DOT__register
+        [0x11U];
+    vlSelf->reg18 = vlSelf->top__DOT__Core__DOT__register
+        [0x12U];
+    vlSelf->reg19 = vlSelf->top__DOT__Core__DOT__register
+        [0x13U];
+    vlSelf->reg20 = vlSelf->top__DOT__Core__DOT__register
+        [0x14U];
+    vlSelf->reg21 = vlSelf->top__DOT__Core__DOT__register
+        [0x15U];
+    vlSelf->reg22 = vlSelf->top__DOT__Core__DOT__register
+        [0x16U];
+    vlSelf->reg23 = vlSelf->top__DOT__Core__DOT__register
+        [0x17U];
+    vlSelf->reg24 = vlSelf->top__DOT__Core__DOT__register
+        [0x18U];
+    vlSelf->reg25 = vlSelf->top__DOT__Core__DOT__register
+        [0x19U];
+    vlSelf->reg26 = vlSelf->top__DOT__Core__DOT__register
+        [0x1aU];
+    vlSelf->reg27 = vlSelf->top__DOT__Core__DOT__register
+        [0x1bU];
+    vlSelf->reg28 = vlSelf->top__DOT__Core__DOT__register
+        [0x1cU];
+    vlSelf->reg29 = vlSelf->top__DOT__Core__DOT__register
+        [0x1dU];
+    vlSelf->reg30 = vlSelf->top__DOT__Core__DOT__register
+        [0x1eU];
+    vlSelf->reg31 = vlSelf->top__DOT__Core__DOT__register
+        [0x1fU];
     vlSelf->top__DOT__Core__DOT__imem = (((QData)((IData)(vlSelf->top__DOT__Core__DOT__pc)) 
                                           << 0x20U) 
                                          | (QData)((IData)(vlSelf->top__DOT__Core__DOT____Vcellout__Imem__inst)));
@@ -1056,14 +975,10 @@ void Vtop___024root___eval(Vtop___024root* vlSelf) {
     // Body
     if (((IData)(vlSelf->clk) & (~ (IData)(vlSelf->__Vclklast__TOP__clk)))) {
         Vtop___024root___sequent__TOP__0(vlSelf);
-    }
-    if (((IData)(vlSelf->top__DOT__sysclk) & (~ (IData)(vlSelf->__Vclklast__TOP__top__DOT__sysclk)))) {
-        Vtop___024root___sequent__TOP__1(vlSelf);
         vlSelf->__Vm_traceActivity[1U] = 1U;
     }
     // Final
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
-    vlSelf->__Vclklast__TOP__top__DOT__sysclk = vlSelf->top__DOT__sysclk;
 }
 
 #ifdef VL_DEBUG

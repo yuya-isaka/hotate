@@ -3,12 +3,74 @@
 module core (
   clk,
   rst,
-  data_seg
+  reg0,
+  reg1,
+  reg2,
+  reg3,
+  reg4,
+  reg5,
+  reg6,
+  reg7,
+  reg8,
+  reg9,
+  reg10,
+  reg11,
+  reg12,
+  reg13,
+  reg14,
+  reg15,
+  reg16,
+  reg17,
+  reg18,
+  reg19,
+  reg20,
+  reg21,
+  reg22,
+  reg23,
+  reg24,
+  reg25,
+  reg26,
+  reg27,
+  reg28,
+  reg29,
+  reg30,
+  reg31
 );
 
   // ポート
   input wire clk, rst;
-  output wire [31:0] data_seg;
+  output wire [31:0] reg0;
+  output wire [31:0] reg1;
+  output wire [31:0] reg2;
+  output wire [31:0] reg3;
+  output wire [31:0] reg4;
+  output wire [31:0] reg5;
+  output wire [31:0] reg6;
+  output wire [31:0] reg7;
+  output wire [31:0] reg8;
+  output wire [31:0] reg9;
+  output wire [31:0] reg10;
+  output wire [31:0] reg11;
+  output wire [31:0] reg12;
+  output wire [31:0] reg13;
+  output wire [31:0] reg14;
+  output wire [31:0] reg15;
+  output wire [31:0] reg16;
+  output wire [31:0] reg17;
+  output wire [31:0] reg18;
+  output wire [31:0] reg19;
+  output wire [31:0] reg20;
+  output wire [31:0] reg21;
+  output wire [31:0] reg22;
+  output wire [31:0] reg23;
+  output wire [31:0] reg24;
+  output wire [31:0] reg25;
+  output wire [31:0] reg26;
+  output wire [31:0] reg27;
+  output wire [31:0] reg28;
+  output wire [31:0] reg29;
+  output wire [31:0] reg30;
+  output wire [31:0] reg31;
 
   // パラメータ ---------------------------------------------------------------------
 
@@ -169,8 +231,40 @@ module core (
 
   assign rs1_data = (de.rs1 == 5'd0) ? 32'd0 : register[de.rs1];
   assign rs2_data = (de.rs2 == 5'd0) ? 32'd0 : register[de.rs2];
-  assign data_seg = register[5'd10];
+  // assign data_seg = register[5'd10];
   // assign data_seg = imem.inst;
+  assign reg0 = register[5'd0];
+  assign reg1 = register[5'd1];
+  assign reg2 = register[5'd2];
+  assign reg3 = register[5'd3];
+  assign reg4 = register[5'd4];
+  assign reg5 = register[5'd5];
+  assign reg6 = register[5'd6];
+  assign reg7 = register[5'd7];
+  assign reg8 = register[5'd8];
+  assign reg9 = register[5'd9];
+  assign reg10 = register[5'd10];
+  assign reg11 = register[5'd11];
+  assign reg12 = register[5'd12];
+  assign reg13 = register[5'd13];
+  assign reg14 = register[5'd14];
+  assign reg15 = register[5'd15];
+  assign reg16 = register[5'd16];
+  assign reg17 = register[5'd17];
+  assign reg18 = register[5'd18];
+  assign reg19 = register[5'd19];
+  assign reg20 = register[5'd20];
+  assign reg21 = register[5'd21];
+  assign reg22 = register[5'd22];
+  assign reg23 = register[5'd23];
+  assign reg24 = register[5'd24];
+  assign reg25 = register[5'd25];
+  assign reg26 = register[5'd26];
+  assign reg27 = register[5'd27];
+  assign reg28 = register[5'd28];
+  assign reg29 = register[5'd29];
+  assign reg30 = register[5'd30];
+  assign reg31 = register[5'd31];
 
   always_ff @(posedge clk) begin
     if (rst) begin

@@ -27,9 +27,38 @@ class Vtop VL_NOT_FINAL {
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clk,0,0);
     VL_IN8(&rst,0,0);
-    VL_OUT8(&anode,3,0);
-    VL_OUT8(&seg,6,0);
-    VL_OUT16(&led,15,0);
+    VL_OUT(&reg0,31,0);
+    VL_OUT(&reg1,31,0);
+    VL_OUT(&reg2,31,0);
+    VL_OUT(&reg3,31,0);
+    VL_OUT(&reg4,31,0);
+    VL_OUT(&reg5,31,0);
+    VL_OUT(&reg6,31,0);
+    VL_OUT(&reg7,31,0);
+    VL_OUT(&reg8,31,0);
+    VL_OUT(&reg9,31,0);
+    VL_OUT(&reg10,31,0);
+    VL_OUT(&reg11,31,0);
+    VL_OUT(&reg12,31,0);
+    VL_OUT(&reg13,31,0);
+    VL_OUT(&reg14,31,0);
+    VL_OUT(&reg15,31,0);
+    VL_OUT(&reg16,31,0);
+    VL_OUT(&reg17,31,0);
+    VL_OUT(&reg18,31,0);
+    VL_OUT(&reg19,31,0);
+    VL_OUT(&reg20,31,0);
+    VL_OUT(&reg21,31,0);
+    VL_OUT(&reg22,31,0);
+    VL_OUT(&reg23,31,0);
+    VL_OUT(&reg24,31,0);
+    VL_OUT(&reg25,31,0);
+    VL_OUT(&reg26,31,0);
+    VL_OUT(&reg27,31,0);
+    VL_OUT(&reg28,31,0);
+    VL_OUT(&reg29,31,0);
+    VL_OUT(&reg30,31,0);
+    VL_OUT(&reg31,31,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.

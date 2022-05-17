@@ -12,9 +12,38 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     : vlSymsp{new Vtop__Syms(_vcontextp__, _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
-    , anode{vlSymsp->TOP.anode}
-    , seg{vlSymsp->TOP.seg}
-    , led{vlSymsp->TOP.led}
+    , reg0{vlSymsp->TOP.reg0}
+    , reg1{vlSymsp->TOP.reg1}
+    , reg2{vlSymsp->TOP.reg2}
+    , reg3{vlSymsp->TOP.reg3}
+    , reg4{vlSymsp->TOP.reg4}
+    , reg5{vlSymsp->TOP.reg5}
+    , reg6{vlSymsp->TOP.reg6}
+    , reg7{vlSymsp->TOP.reg7}
+    , reg8{vlSymsp->TOP.reg8}
+    , reg9{vlSymsp->TOP.reg9}
+    , reg10{vlSymsp->TOP.reg10}
+    , reg11{vlSymsp->TOP.reg11}
+    , reg12{vlSymsp->TOP.reg12}
+    , reg13{vlSymsp->TOP.reg13}
+    , reg14{vlSymsp->TOP.reg14}
+    , reg15{vlSymsp->TOP.reg15}
+    , reg16{vlSymsp->TOP.reg16}
+    , reg17{vlSymsp->TOP.reg17}
+    , reg18{vlSymsp->TOP.reg18}
+    , reg19{vlSymsp->TOP.reg19}
+    , reg20{vlSymsp->TOP.reg20}
+    , reg21{vlSymsp->TOP.reg21}
+    , reg22{vlSymsp->TOP.reg22}
+    , reg23{vlSymsp->TOP.reg23}
+    , reg24{vlSymsp->TOP.reg24}
+    , reg25{vlSymsp->TOP.reg25}
+    , reg26{vlSymsp->TOP.reg26}
+    , reg27{vlSymsp->TOP.reg27}
+    , reg28{vlSymsp->TOP.reg28}
+    , reg29{vlSymsp->TOP.reg29}
+    , reg30{vlSymsp->TOP.reg30}
+    , reg31{vlSymsp->TOP.reg31}
     , rootp{&(vlSymsp->TOP)}
 {
 }

@@ -109,7 +109,38 @@ int main(int argc, char **argv)
 	// 所定時間シミュレーションを実行すると終了し、最後に結果dut->cntを出力する
 	// std::cout << "Final Counter Value = " << dut->cnt << '\n';
 	// printf("Final Led Value = %d\n", dut->led);
-	printf("Final Led Value = %d\n", dut->led);
+	printf("Final Reg0 Value = %d\n", dut->reg0);
+	printf("Final Reg1 Value = %d\n", dut->reg1);
+	printf("Final Reg2 Value = %d\n", dut->reg2);
+	printf("Final Reg3 Value = %d\n", dut->reg3);
+	printf("Final Reg4 Value = %d\n", dut->reg4);
+	printf("Final Reg5 Value = %d\n", dut->reg5);
+	printf("Final Reg6 Value = %d\n", dut->reg6);
+	printf("Final Reg7 Value = %d\n", dut->reg7);
+	printf("Final Reg8 Value = %d\n", dut->reg8);
+	printf("Final Reg9 Value = %d\n", dut->reg9);
+	printf("Final Reg10 Value = %d\n", dut->reg10);
+	printf("Final Reg11 Value = %d\n", dut->reg11);
+	printf("Final Reg12 Value = %d\n", dut->reg12);
+	printf("Final Reg13 Value = %d\n", dut->reg13);
+	printf("Final Reg14 Value = %d\n", dut->reg14);
+	printf("Final Reg15 Value = %d\n", dut->reg15);
+	printf("Final Reg16 Value = %d\n", dut->reg16);
+	printf("Final Reg17 Value = %d\n", dut->reg17);
+	printf("Final Reg18 Value = %d\n", dut->reg18);
+	printf("Final Reg19 Value = %d\n", dut->reg19);
+	printf("Final Reg20 Value = %d\n", dut->reg20);
+	printf("Final Reg21 Value = %d\n", dut->reg21);
+	printf("Final Reg22 Value = %d\n", dut->reg22);
+	printf("Final Reg23 Value = %d\n", dut->reg23);
+	printf("Final Reg24 Value = %d\n", dut->reg24);
+	printf("Final Reg25 Value = %d\n", dut->reg25);
+	printf("Final Reg26 Value = %d\n", dut->reg26);
+	printf("Final Reg27 Value = %d\n", dut->reg27);
+	printf("Final Reg28 Value = %d\n", dut->reg28);
+	printf("Final Reg29 Value = %d\n", dut->reg29);
+	printf("Final Reg30 Value = %d\n", dut->reg30);
+	printf("Final Reg31 Value = %d\n", dut->reg31);
 	// printf("Final Seg Value = %d\n", dut->seg);
 
 	// インスタンスした回路を終了させる
