@@ -7,7 +7,7 @@ int factorial(int n) {
 }
 
 int main() {
-  factorial(3);
+  factorial(10);
   for(;;) {}
   return 0;
 }

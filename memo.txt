@@ -274,3 +274,7 @@ CONFIG_VOLTAGE は Bank0 の VCCIO 電圧です。
 current_design は、XDC でのコマンドであって、Tcl 本来の機能ではありません。
 
 現在は、2.5, VCCOにしている。
+
+
+コンパイラのパス確認
+	- which pk
