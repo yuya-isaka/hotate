@@ -1,6 +1,6 @@
 `default_nettype none
 
-module memoryInstruction #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
+module memoryInstruction #(parameter ADDR_SIZE = 32'd7)
 (
   clk,
   rst,

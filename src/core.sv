@@ -12,10 +12,10 @@ module core (
 
   // パラメータ ---------------------------------------------------------------------
 
-  parameter INST_MEM_SIZE = 32'd64;
-  parameter INST_ADDR_SIZE = 32'd7; // -2してもおっけい？
-  parameter DATA_MEM_SIZE = 32'd512;
-  parameter DATA_ADDR_SIZE = 32'd10; // -2してもおっけい？
+  // parameter INST_MEM_SIZE = 32'd64;
+  parameter INST_ADDR_SIZE = 32'd7;
+  // parameter DATA_MEM_SIZE = 32'd512;
+  parameter DATA_ADDR_SIZE = 32'd10;
 
   // PC (WBで更新)  ---------------------------------------------------------------------------
 
@@ -97,7 +97,7 @@ module core (
 
   assign imem.addr = pc;
 
-  memoryInstruction #(.MEM_SIZE(INST_MEM_SIZE), .ADDR_SIZE(INST_ADDR_SIZE)) Imem (
+  memoryInstruction #(.ADDR_SIZE(INST_ADDR_SIZE)) Imem (
     .clk(clk),
     .rst(rst),
 
@@ -226,7 +226,7 @@ module core (
   assign dmem.write_enable = state_ma && de._store;
 
   // データメモリ読み込み/書き込み
-  memoryData #(.MEM_SIZE(DATA_MEM_SIZE), .ADDR_SIZE(DATA_ADDR_SIZE)) Dmem (
+  memoryData #(.ADDR_SIZE(DATA_ADDR_SIZE)) Dmem (
     .clk(clk),
     .rst(rst),
 

@@ -29,10 +29,8 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBit(c+109,"clk",-1,FST_VD_INPUT,FST_VT_VCD_WIRE, false,-1);
     tracep->declBit(c+104,"rst",-1,FST_VD_INPUT,FST_VT_VCD_WIRE, false,-1);
     tracep->declBus(c+1,"data_seg",-1,FST_VD_OUTPUT,FST_VT_VCD_WIRE, false,-1, 31,0);
-    tracep->declBus(c+110,"INST_MEM_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
-    tracep->declBus(c+111,"INST_ADDR_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
-    tracep->declBus(c+112,"DATA_MEM_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
-    tracep->declBus(c+113,"DATA_ADDR_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
+    tracep->declBus(c+110,"INST_ADDR_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
+    tracep->declBus(c+111,"DATA_ADDR_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
     tracep->declBus(c+2,"pc",-1, FST_VD_IMPLICIT,FST_VT_SV_LOGIC, false,-1, 31,0);
     tracep->declBit(c+3,"state_idle",-1, FST_VD_IMPLICIT,FST_VT_SV_LOGIC, false,-1);
     tracep->declBit(c+4,"state_if",-1, FST_VD_IMPLICIT,FST_VT_SV_LOGIC, false,-1);
@@ -115,8 +113,7 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBit(c+94,"u_type",-1, FST_VD_IMPLICIT,FST_VT_VCD_WIRE, false,-1);
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("Dmem ");
-    tracep->declBus(c+112,"MEM_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
-    tracep->declBus(c+113,"ADDR_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
+    tracep->declBus(c+111,"ADDR_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
     tracep->declBit(c+109,"clk",-1,FST_VD_INPUT,FST_VT_VCD_WIRE, false,-1);
     tracep->declBit(c+104,"rst",-1,FST_VD_INPUT,FST_VT_VCD_WIRE, false,-1);
     tracep->declBus(c+95,"read_addr",-1,FST_VD_INPUT,FST_VT_VCD_WIRE, false,-1, 31,0);
@@ -126,8 +123,7 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBus(c+99,"read_data",-1,FST_VD_OUTPUT,FST_VT_VCD_WIRE, false,-1, 31,0);
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("Imem ");
-    tracep->declBus(c+110,"MEM_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
-    tracep->declBus(c+111,"ADDR_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
+    tracep->declBus(c+110,"ADDR_SIZE",-1, FST_VD_IMPLICIT,FST_VT_VCD_PARAMETER, false,-1, 31,0);
     tracep->declBit(c+109,"clk",-1,FST_VD_INPUT,FST_VT_VCD_WIRE, false,-1);
     tracep->declBit(c+104,"rst",-1,FST_VD_INPUT,FST_VT_VCD_WIRE, false,-1);
     tracep->declBus(c+100,"addr",-1,FST_VD_INPUT,FST_VT_VCD_WIRE, false,-1, 31,0);
@@ -387,8 +383,6 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
     tracep->fullCData(oldp+107,(vlSelf->seg),7);
     tracep->fullIData(oldp+108,(vlSelf->top__DOT__count),32);
     tracep->fullBit(oldp+109,(vlSelf->top__DOT__sysclk));
-    tracep->fullIData(oldp+110,(0x40U),32);
-    tracep->fullIData(oldp+111,(7U),32);
-    tracep->fullIData(oldp+112,(0x200U),32);
-    tracep->fullIData(oldp+113,(0xaU),32);
+    tracep->fullIData(oldp+110,(7U),32);
+    tracep->fullIData(oldp+111,(0xaU),32);
 }

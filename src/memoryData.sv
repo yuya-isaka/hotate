@@ -1,6 +1,7 @@
 `default_nettype none
 
-module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
+// module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
+module memoryData #(parameter ADDR_SIZE = 32'd7)
 (
   clk,
   rst,
@@ -31,7 +32,7 @@ module memoryData #(parameter MEM_SIZE = 32'd1024, parameter ADDR_SIZE = 32'd7)
   // メモリ初期化(全要素初期化しないと初期化が無視される)
   task init_mem;
     begin
-      for(int i=0; i<MEM_SIZE; i++) begin
+      for(int i=0; i<(2**(ADDR_SIZE-2+1)); i++) begin
         mem[i] = 32'd0;
       end
     end
