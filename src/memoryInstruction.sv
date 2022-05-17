@@ -22,7 +22,9 @@ module memoryInstruction #(parameter ADDR_SIZE = 32'd7)
 
   initial begin
     // $readmemh("/home/isaka/hotate/test/fib.hex", mem);
-    $readmemh("/Users/yuyaisaka/workspace/project/project-riscv/hotate/test/fib.hex", mem);
+    // $readmemh("/Users/yuyaisaka/workspace/project/project-riscv/hotate/test/fib.hex", mem);
+    // $readmemh("/Users/yuyaisaka/workspace/project/project-riscv/hotate/test_mac/fib.hex", mem);
+    $readmemh("/Users/yuyaisaka/workspace/project/project-riscv/hotate/test_mac/factorial.hex", mem);
   end
 
   // output (rstがfalseの時、クロックと同期して代入、最初のリセットだけ？)

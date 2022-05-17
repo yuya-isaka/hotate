@@ -25,10 +25,10 @@ module top (
    end
    always_ff @(posedge clk) begin
      if (rst) count <= 32'd0;
-     else if (count == 32'd10000) count <= 32'd0;
+     else if (count == 32'd10) count <= 32'd0;
      else count <= count + 32'd1;
    end
-   wire sysclk = (count > 32'd5000) ? 1'b0 : 1'b1;
+   wire sysclk = (count > 32'd5) ? 1'b0 : 1'b1;
 //    // CoreとSevenのclkをsysclkに変更
 
    // RISC-V core

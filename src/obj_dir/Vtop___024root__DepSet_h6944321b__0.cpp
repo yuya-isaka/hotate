@@ -12,10 +12,10 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__0\n"); );
     // Body
     vlSelf->top__DOT__count = ((IData)(vlSelf->rst)
-                                ? 0U : ((0x3e8U == vlSelf->top__DOT__count)
+                                ? 0U : ((0xaU == vlSelf->top__DOT__count)
                                          ? 0U : ((IData)(1U) 
                                                  + vlSelf->top__DOT__count)));
-    vlSelf->top__DOT__sysclk = (0x1f4U >= vlSelf->top__DOT__count);
+    vlSelf->top__DOT__sysclk = (5U >= vlSelf->top__DOT__count);
 }
 
 extern const VlUnpacked<CData/*5:0*/, 64> Vtop__ConstPool__TABLE_h4a7513c7_0;

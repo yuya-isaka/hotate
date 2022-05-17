@@ -6,7 +6,7 @@
 
 #include "Vtop___024root.h"
 
-extern const VlWide<17>/*543:0*/ Vtop__ConstPool__CONST_h787e27d1_0;
+extern const VlWide<20>/*639:0*/ Vtop__ConstPool__CONST_h7211714d_0;
 
 VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -16,7 +16,7 @@ VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
     IData/*31:0*/ __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i;
     // Body
     vlSelf->top__DOT__count = 0U;
-    VL_READMEM_N(true, 32, 64, 0, VL_CVT_PACK_STR_NW(17, Vtop__ConstPool__CONST_h787e27d1_0)
+    VL_READMEM_N(true, 32, 64, 0, VL_CVT_PACK_STR_NW(20, Vtop__ConstPool__CONST_h7211714d_0)
                  ,  &(vlSelf->top__DOT__Core__DOT__Imem__DOT__mem)
                  , 0, ~0ULL);
     __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i = 0U;
@@ -83,7 +83,7 @@ VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
                                               & vlSelf->top__DOT__Core__DOT__dmem[3U]) 
                                              | (vlSelf->top__DOT__Core__DOT____Vcellout__Dmem__read_data 
                                                 >> 0x1fU));
-    vlSelf->top__DOT__sysclk = (0x1f4U >= vlSelf->top__DOT__count);
+    vlSelf->top__DOT__sysclk = (5U >= vlSelf->top__DOT__count);
     vlSelf->anode = ((0x186a0U > vlSelf->top__DOT__Seven__DOT__seg_counter)
                       ? 0xeU : ((0x30d40U > vlSelf->top__DOT__Seven__DOT__seg_counter)
                                  ? 0xdU : ((0x493e0U 
