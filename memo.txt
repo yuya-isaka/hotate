@@ -1,29 +1,43 @@
-参考：chibiscv(kivantium-core), chibi-risc-v(kivantium-core), ChiselProjectsIsaka(Pencilrocket、動かせたやつ？),  riscv-processor-hashi, riscv-book(chisel本井阪勉強)
-古い：RV32
-新しい：hotate(kivantium-core参考に作ってるやつ), first(Pencilrocketを参考に自分で作ってるやつ)
 
-hotateはパラメータを利用してモジュールに引数渡したり、色々工夫できている。
+参考
+	- chibiscv(kivantium-core)
+	- chibi-risc-v(kivantium-core)
+	- ChiselProjectsIsaka(Pencilrocket、動かせたやつ？)
+	- riscv-processor-hashi
+	- riscv-book(chisel本井阪勉強)
+
+
+古い
+	- RV32
+新しい
+	- hotate(kivantium-core参考に作ってるやつ)
+	- first(Pencilrocketを参考に自分で作ってるやつ)
+
 
 やりたいこと
-最低限の確認（シミュレーション上、FPGA実機）
-・coreのrs2の符号拡張について確認
-・テストスイート走らせてみる（rv32im）
-シリアル通信
-・Uartをhotateで処理できる機構を追加（まずは送信だけで良い）
-・minicomを使って通信して、hotateでC言語の"Hello World"を表示させる
-	・デバイスドライバがない場合、特定のアドレスに書き込むってする（メモリマップドI/O）。ある場合シリアル通信用の関数が用意されていて、その関数の中身では同じようにアドレスへの書き込みなどが行われているかもしれないが、それをユーザが意識せずにできるようにしている。）これがデバイスドライバファイルの役割
-OSを利用してシリアル通信
-・割込み命令（CSR,ECALL）
-・RISC-V用のOS（RISC-V OSを作ろう、と、KOZOSの移植を参考に）
-・RISC-V用のOSを動かしてターミナルを出し、そこで入力したデータをエコーバックする処理ができれば嬉しい
-OSを利用してネットワーク通信
-・LANコントローラを利用
+- 最低限の確認（シミュレーション上、FPGA実機）
+	- coreのrs2の符号拡張について確認
+	- テストスイート(riscv-test)走らせてみる（rv32im）
+	- カスタム命令を追加してみる（popcount）
+	- アクセラレータを扱う機構について（RoCC的な）
+- シリアル通信
+	- Uartをhotateで処理できる機構を追加（まずは送信だけで良い）
+	- minicomを使って通信して、hotateでC言語の"Hello World"を表示させる
+		- デバイスドライバがない場合、特定のアドレスに書き込むってする（メモリマップドI/O）。ある場合シリアル通信用の関数が用意されていて、その関数の中身では同じようにアドレスへの書き込みなどが行われているかもしれないが、それをユーザが意識せずにできるようにしている。）これがデバイスドライバファイルの役割
+- OSを利用してシリアル通信
+	- 割込み命令（CSR,ECALL）
+	- RISC-V用のOS（RISC-V OSを作ろう、と、KOZOSの移植を参考に）
+	- RISC-V用のOSを動かしてターミナルを出し、そこで入力したデータをエコーバックする処理ができれば嬉しい
+- OSを利用してネットワーク通信
+	- LANコントローラを利用
+- その他
+	- ビット幅の警告を出すスクリプト
 
 継続
-SystemVerilogを用いてRISC-Vを作ってるあの書籍のコードを参考に、改良
-・パイプライン
-・キャッシュメモリ
-・ノイマン型
+- SystemVerilogを用いてRISC-Vを作ってるあの書籍のコードを参考に、改良
+	- パイプライン
+	- キャッシュメモリ
+	- ノイマン型
 
 
 目標
@@ -288,3 +302,23 @@ current_design は、XDC でのコマンドであって、Tcl 本来の機能で
 
 	とかに落ち着いている
 	-mabiを設定していない状況で、dを抜くとエラーになる。よくわからん。
+
+marchiとmabiの組み合わせについて
+・https://www.sifive.com/blog/all-aboard-part-1-compiler-args
+
+
+ビット幅の規則の罠
+https://kenjiwn.hatenablog.com/entry/2017/08/08/003721
+
+
+RISC-V 命令調べる時参考になる
+・https://qiita.com/zacky1972/items/48bf61bfe3ef2b8ce557
+・https://msyksphinz-self.github.io/riscv-isadoc/html/rvi.html
+
+
+要調査
+乗算について
+乗算結果を格納する信号のビット幅は、乗数と被乗数の幅を足した幅で用意するのが基本。-> まじ？？？
+それから、オペランドは両方がsignedになるようにする。
+＊オペランドのどちらか片方でもunsignedになると全ての演算がunsigned扱いされてしまうので要注意。
+例えばDATA_AがsignedでもDATA_A[7:0]と書いてしまうとunsigned扱いされてしまう -> まじ？？？
