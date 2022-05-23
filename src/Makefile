@@ -12,4 +12,4 @@ lint:
 push:
 	git add .
 	git commit -m "$(M)"
-	git push origin master
+	git push origin check_register
