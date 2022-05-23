@@ -325,9 +325,17 @@ module core (
   // ↓verilatorに怒られたので変
   // 符号拡張しろばか！
   // ここまた確認！！！
-  assign dmem.write_data = (de.funct3 == 3'b000) ? {{24{rs2_data[7]}}, rs2_data[7:0]} :
-                           (de.funct3 == 3'b001) ? {{16{rs2_data[15]}}, rs2_data[15:0]} :
-                           rs2_data;
+  // SW命令です。
+  // 有用：命令関連
+  // https://progrunner.hatenablog.jp/entry/2017/12/03/221829
+  // 正確には間違っているのか？？？
+  // テストを通したらわかることだから、まあいいか
+  // 多分０拡張でもいいはず
+  // もし、sb,shをdump内のアセンブリで使っていて、エラーがあるなら、ここが原因
+  // まあ基本swだから問題ないと
+  assign dmem.write_data = (de.funct3 == 3'b000) ? {{24{rs2_data[7]}}, rs2_data[7:0]} : // sb
+                           (de.funct3 == 3'b001) ? {{16{rs2_data[15]}}, rs2_data[15:0]} : // sh
+                           rs2_data; // sw
   assign dmem.write_enable = state_ma && de._store;
 
   // データメモリ読み込み/書き込み

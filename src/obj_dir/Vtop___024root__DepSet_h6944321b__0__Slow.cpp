@@ -6,7 +6,7 @@
 
 #include "Vtop___024root.h"
 
-extern const VlWide<20>/*639:0*/ Vtop__ConstPool__CONST_h7211714d_0;
+extern const VlWide<19>/*607:0*/ Vtop__ConstPool__CONST_h86d708ac_0;
 
 VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -15,7 +15,7 @@ VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
     // Init
     IData/*31:0*/ __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i;
     // Body
-    VL_READMEM_N(true, 32, 64, 0, VL_CVT_PACK_STR_NW(20, Vtop__ConstPool__CONST_h7211714d_0)
+    VL_READMEM_N(true, 32, 64, 0, VL_CVT_PACK_STR_NW(19, Vtop__ConstPool__CONST_h86d708ac_0)
                  ,  &(vlSelf->top__DOT__Core__DOT__Imem__DOT__mem)
                  , 0, ~0ULL);
     __Vtask_top__DOT__Core__DOT__Dmem__DOT__init_mem__2__unnamedblk1__DOT__i = 0U;
