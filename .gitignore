@@ -53,3 +53,7 @@ dkms.conf
 
 # Add
 vivado_prj
+
+# Verilator
+obj_dir
+*.fst
