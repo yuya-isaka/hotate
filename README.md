@@ -1,6 +1,6 @@
 # hotate
 
-The simple 32-bit RISC-V core.
+The simple 32-bit RISC-V core written in SystemVerilog.
 
 ## Current Status
 
